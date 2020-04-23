@@ -1,0 +1,33 @@
+{
+  "name": "weight_and_balance_calculator",
+  "version": "1.0.0",
+  "description": "A trim sheet/ take-off calculator for passion airlines, it automated the take-off weight and balance calculations",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "keywords": [
+    "Trim-sheet",
+    "weight-calculator",
+    "balance",
+    "calculator",
+    "passion-airlines"
+  ],
+  "author": "Isaac Tsibu-Darko",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "concurrently": "^5.1.0",
+    "config": "^3.3.1",
+    "express": "^4.17.1",
+    "mysql2": "^2.1.0",
+    "sequelize": "^5.21.6"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}
