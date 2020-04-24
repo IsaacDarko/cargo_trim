@@ -582,15 +582,15 @@ export default class TrimForm extends Component {
                                 </div>
 
                                 <div className="col-2">
-                                    <SkiperGrouper>                                       
+                                    <LabelGrouper>                                       
                                         <Input type="text" name="bags_comptaft1_weight" id="bags_comptaft1_weight" placeholder="Max 1225" onBlur={value.handleBaggAft1} />
-                                    </SkiperGrouper>
+                                    </LabelGrouper>
                                 </div> 
 
                                 <div className="col-2">                                 
-                                    <SkipGrouper>
+                                    <LabelGrouper>
                                         <Spandex name="bags_comptaft1_index" id="bags_comptaft1_index">{ba1index}</Spandex>
-                                    </SkipGrouper>
+                                    </LabelGrouper>
                                 </div>
 
                             </div>
