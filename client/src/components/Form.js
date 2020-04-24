@@ -507,11 +507,11 @@ export default class TrimForm extends Component {
                                         </FormGrouper>
                                     
                                     
-                                        <FormGrouper>
+                                        <FormGroup>
                                             <Input type="text" name="estfuelused_weight" id="estfuelused_weight" onBlur={value.handleFused} />
-                                        </FormGrouper>
+                                        </FormGroup>
                                     
-                                    
+                                         
                                     <LabelGrouper>
                                         <FormGrouper>
                                             <span name="lw_weight" id="lw_weight"><h5>{lweight} KG</h5></span>

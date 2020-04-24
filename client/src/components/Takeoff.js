@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import Form from './Form';
+import Form from './Form2';
 import Officiator from './Officiator';
 
 
-export default class Takeoff extends Component {
+export default class Tvakeoff extends Component {
     render() {
         return (
             <div>
-                <Form></Form>
-                <Officiator></Officiator>                
+                <Form />
+                <Officiator />                
             </div>
         )
     }

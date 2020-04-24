@@ -21,7 +21,7 @@ export default class TrimForm extends Component {
                 const { weight: c5weight, index: c5index, message : c5errMssge } = value.pax5Data;
                 const { weight: c6weight, index: c6index, message : c6errMssge } = value.pax6Data;
                 const { weight: c7weight, index: c7index, message : c7errMssge } = value.pax7Data;
-                const { sumUp : totPax } = value.totalNumberOfPax;
+                const { sumUp : totPax, message: totPaxMssge } = value.totalNumberOfPax;
                 const { index: bfdindex, message : bagfdMssge } = value.baggfwdData;
                 const { index: ba1index, message : bag1Mssge } = value.baggaft1Data;
                 const { index: ba2index, message : bag2Mssge } = value.baggaft2Data;
@@ -32,6 +32,7 @@ export default class TrimForm extends Component {
                 const { index: findex } = value.fobData
                 const { weight : toffWeight, index : twIndex } = value.takeOffData;
                 const { weight: lweight, index: lindex } = value.landingData;
+                const {index : totIndex} = value.totalIndex;
                  return( 
                 
                 
@@ -41,8 +42,7 @@ export default class TrimForm extends Component {
                     <div className="row">
 
                     <FormContainer className="col-8">
-
-                    {/*Header Row  -----  Where headers begin*/}
+                            {/*Header Row  -----  Where headers begin*/}
                         <div className="row">
                             <div className="col-3">
                             </div>
@@ -91,7 +91,20 @@ export default class TrimForm extends Component {
                                     </FormGroup>
                                 </div>
 
-                                
+                                <div className="col-2">
+                                    <LabelGrouper>
+                                        <FormGroup>
+                                            <Input name="owe_weight" id="owe_weight" placeholder="17980" disabled />
+                                        </FormGroup>
+                                    </LabelGrouper> 
+                                </div>
+
+                                <div className="col-2">
+                                    <LabelGrouper>
+                                        <Spandex name="owe_index" id="owe_index">90.5</Spandex>
+                                    </LabelGrouper>
+                                </div>
+
                             </div>
 
 
@@ -116,7 +129,21 @@ export default class TrimForm extends Component {
                                     <LabelGrouper>
                                         <Spanner name="" id="" disabled >.</Spanner>
                                     </LabelGrouper>
+                                </div>
+
+                                <div className="col-2">
+                                    <FormGroup>
+                                        <Input name="observer_weight" id="observer_weight" onBlur={value.handleObserver} />
+                                        {obsMssge}
+                                    </FormGroup>
                                 </div>    
+
+                                <div className="col-2">
+
+                                    <LabelGrouper>
+                                            <Spandex name="observer_index" id="observer_index">{obsindex}</Spandex>
+                                    </LabelGrouper>
+                                </div>
 
                             </div>
 
@@ -144,6 +171,20 @@ export default class TrimForm extends Component {
                                     <LabelGrouper>
                                         <Spanner name="" id="" disabled >.</Spanner>
                                     </LabelGrouper>
+                                </div>
+
+
+                                <div className="col-2">
+                                    <FormGroup>
+                                        <Input name="wardrobe_fwd_weight" id="wardrobe_fwd_weight" onBlur={value.handleWardrobe} />       
+                                    </FormGroup>
+                                </div>
+
+
+                                <div className="col-2">
+                                   <FormGroup>
+                                        <Spandex name="wardrobe_fwd_index" id="wardrobe_fwd_index" >{windex}</Spandex>
+                                    </FormGroup>
                                 </div>
 
 
@@ -177,6 +218,18 @@ export default class TrimForm extends Component {
                                             <Alert>{c1errMssge}</Alert>
                                         </FormGroup>
                                     </LabelGrouper>
+                                </div>
+
+                                <div className="col-2">
+                                    <LabelGrouper>
+                                        <Spandex name="pax_compt1_weight" id="pax_compt1_weight">{c1weight}KG</Spandex>
+                                    </LabelGrouper>
+                                </div>
+
+                                <div className="col-2">                                                                                                   
+                                    <LabelGroupie>                                    
+                                        <Spandex name="pax_compt1_index" id="pax_compt1_index">{c1index}</Spandex>
+                                    </LabelGroupie>
                                 </div>
                                 
                             </div>
@@ -213,6 +266,19 @@ export default class TrimForm extends Component {
                                     </LabelGrouper>
                                 </div>
 
+                                <div className="col-2">
+                                    <LabelGrouper>
+                                        <Spandex name="pax_compt2_weight" id="pax_compt2_weight">{c2weight}KG</Spandex>
+                                    </LabelGrouper> 
+                                </div>
+
+                                <div className="col-2">                                 
+                                    <LabelGrouper>
+                                        <Spandex name="pax_compt2_index" id="pax_compt2_index">{c2index}</Spandex>
+                                    </LabelGrouper>
+                                </div>
+
+                                
                             </div>
 
 
@@ -245,6 +311,20 @@ export default class TrimForm extends Component {
                                     </LabelGrouper>
                                 </div>
 
+                                <div className="col-2">
+                                    <LabelGrouper>                                        
+                                        <Spandex name="pax_compt3_weight" id="pax_compt3_weight">{c3weight}KG</Spandex>
+                                    </LabelGrouper>
+                                </div>
+
+                                <div className="col-2">                                 
+                                    <LabelGrouper>
+                                        <FormGroup>
+                                            <Spandex name="pax_compt3_index" id="pax_compt3_index">{c3index}</Spandex>
+                                        </FormGroup>
+                                    </LabelGrouper>
+                                </div>
+
                             </div>
 
 
@@ -269,7 +349,26 @@ export default class TrimForm extends Component {
                                     </LabelGrouper>
                                 </div>
 
-                                
+                                <div className="col-4">
+                                    <LabelGrouper>
+                                        <FormGroup>
+                                            <Input type="text" name="compt4_nopax" id="compt4_nopax" placeholder="Max 12" onBlur={value.handlePax4} />
+                                            <Alert>{c4errMssge}</Alert>
+                                        </FormGroup>
+                                    </LabelGrouper>
+                                </div>
+
+                                <div className="col-2">
+                                    <LabelGrouper>
+                                        <Spandex name="pax_compt4_weight" id="pax_compt4_weight">{c4weight}KG</Spandex>
+                                    </LabelGrouper>
+                                </div>
+
+                                <div className="col-2">                                 
+                                    <LabelGrouper>
+                                        <Spandex name="pax_compt4_index" id="pax_compt4_index">{c4index}</Spandex>
+                                    </LabelGrouper>
+                                </div>
 
                             </div>
 
@@ -294,6 +393,27 @@ export default class TrimForm extends Component {
                                         <FormText color="muted">
                                             5
                                         </FormText>
+                                    </LabelGrouper>
+                                </div>
+
+                                <div className="col-4">
+                                    <LabelGrouper>
+                                        <FormGroup>
+                                            <Input type="text" name="compt5_nopax" id="compt5_nopax" placeholder="Max 12" onBlur={value.handlePax5} />
+                                            <Alert>{c5errMssge}</Alert>
+                                        </FormGroup>
+                                    </LabelGrouper>
+                                </div>
+
+                                <div className="col-2">
+                                    <LabelGrouper>
+                                        <Spandex name="pax_compt5_weight" id="pax_compt5_weight">{c5weight}KG</Spandex>
+                                    </LabelGrouper>
+                                </div>
+
+                                <div className="col-2">                                 
+                                    <LabelGrouper>
+                                        <Spandex name="pax_compt5_index" id="pax_compt5_index">{c5index}</Spandex>
                                     </LabelGrouper>
                                 </div>
 
@@ -322,6 +442,29 @@ export default class TrimForm extends Component {
                                     </LabelGrouper>
                                 </div>
 
+                                <div className="col-4">
+                                    <LabelGrouper>
+                                        <FormGroup>
+                                            <Input type="text" name="compt6_nopax" id="compt6_nopax" placeholder="Max 12" onBlur={value.handlePax6} />
+                                            <Alert>{c6errMssge}</Alert>
+                                        </FormGroup>
+                                    </LabelGrouper>
+                                </div>
+
+                                <div className="col-2">
+                                    <LabelGrouper>
+                                        <FormGroup>
+                                            <Spandex name="pax_compt6_weight" id="pax_compt6_weight">{c6weight}KG</Spandex>
+                                        </FormGroup>
+                                    </LabelGrouper>
+                                </div>
+
+                                <div className="col-2">                                 
+                                    <LabelGrouper>
+                                        <Spandex name="pax_compt6_index" id="pax_compt6_index">{c6index}</Spandex>
+                                    </LabelGrouper>
+                                </div>
+
                             </div>
 
 
@@ -342,6 +485,27 @@ export default class TrimForm extends Component {
                                         <FormText color="muted">
                                             7
                                         </FormText>
+                                    </LabelGrouper>
+                                </div>
+
+                                <div className="col-4">
+                                    <LabelGrouper>
+                                        <FormGroup>
+                                            <Input type="text" name="compt7_nopax" id="compt7_nopax" placeholder="Max 8" onBlur={value.handlePax7} />
+                                            <Alert>{c7errMssge}</Alert>
+                                        </FormGroup>
+                                    </LabelGrouper>
+                                </div>
+
+                                <div className="col-2">
+                                    <LabelGrouper>
+                                        <Spandex name="pax_compt7_weight" id="pax_compt7_weight">{c7weight}KG</Spandex>
+                                    </LabelGrouper>
+                                </div>
+
+                                <div className="col-2">                                 
+                                    <LabelGrouper>
+                                        <Spandex name="pax_compt7_index" id="pax_compt7_index">{c7index}</Spandex>
                                     </LabelGrouper>
                                 </div>
 
@@ -369,6 +533,24 @@ export default class TrimForm extends Component {
                                     </LabelGrouper>
                                 </div>
 
+                                <div className="col-4">
+                                    <LabelGrouper>
+                                        <Spanner name="" id="" disabled >.</Spanner>
+                                    </LabelGrouper>
+                                </div>
+
+                                <div className="col-2">
+                                    <LabelGrouper>
+                                        <Input type="text" name="bags_comptfwd_weight" id="bags_comptfwd_weight" placeholder="Max 231" onBlur={value.handleBaggFwd} />
+                                    </LabelGrouper>
+                                </div>   
+
+                                <div className="col-2">                                 
+                                    <FormGroup>
+                                        <Spandex name="bags_comptfwd_index" id="bags_comptfwd_index">{bfdindex}</Spandex>
+                                    </FormGroup>
+                                </div>                         
+                                                                
                             </div>
 
 
@@ -393,6 +575,24 @@ export default class TrimForm extends Component {
                                     </LabelGrouper>
                                 </div>
 
+                                <div className="col-4">
+                                    <LabelGrouper>
+                                        <Spanner name="" id="" disabled >.</Spanner>
+                                    </LabelGrouper>
+                                </div>
+
+                                <div className="col-2">
+                                    <SkiperGrouper>                                       
+                                        <Input type="text" name="bags_comptaft1_weight" id="bags_comptaft1_weight" placeholder="Max 1225" onBlur={value.handleBaggAft1} />
+                                    </SkiperGrouper>
+                                </div> 
+
+                                <div className="col-2">                                 
+                                    <SkipGrouper>
+                                        <Spandex name="bags_comptaft1_index" id="bags_comptaft1_index">{ba1index}</Spandex>
+                                    </SkipGrouper>
+                                </div>
+
                             </div>
 
 
@@ -418,6 +618,24 @@ export default class TrimForm extends Component {
                                     </LabelGrouper>
                                 </div>
 
+                                <div className="col-4">
+                                    <LabelGrouper>
+                                        <Spanner name="" id="" disabled >.</Spanner>
+                                    </LabelGrouper>
+                                </div>
+
+                                <div className="col-2">
+                                    <SkiperGrouper>                                       
+                                        <Input type="text" name="bags_comptaft2_weight" id="bags_comptaft2_weight" placeholder="Max 454" onBlur={value.handleBaggAft2} />
+                                    </SkiperGrouper>
+                                </div>
+
+                                <div className="col-2">                                 
+                                    <SkipGrouper>
+                                        <Spandex name="bags_comptaft2_index" id="bags_comptaft2_index">{ba2index}</Spandex>
+                                    </SkipGrouper>
+                                </div>
+
                             </div>
 
 
@@ -439,6 +657,25 @@ export default class TrimForm extends Component {
                                         <Spanner color="muted">
                                             AFT2
                                         </Spanner>
+                                    </LabelGrouper>
+                                </div>
+
+                                <div className="col-4">
+                                    <LabelGrouper>
+                                        <Spanner name="" id="" disabled >.</Spanner>
+                                    </LabelGrouper>
+                                </div>
+
+                                <div className="col-2">
+                                    <LabelGrouper>
+                                        <Spandex name="zfw_weight" id="zfw_weight">{zfweight}</Spandex>
+                                        <Alert>{zfMssge}</Alert>
+                                    </LabelGrouper>
+                                </div>
+
+                                <div className="col-2">
+                                    <LabelGrouper>
+                                        <Spandex name="zfw_index" id="zfw_index">{zfindex}</Spandex>
                                     </LabelGrouper>
                                 </div>
 
@@ -466,6 +703,24 @@ export default class TrimForm extends Component {
                                     </LabelGrouper>
                                 </div>
 
+                                <div className="col-4">
+                                    <LabelGrouper>
+                                        <Spanner name="" id="" disabled >.</Spanner>
+                                    </LabelGrouper>
+                                </div>
+
+                                <div className="col-2">
+                                    <FormGrouper>
+                                        <Input type="text" name="fob_weight" id="fob_weight" onBlur={value.handleFuel} />
+                                    </FormGrouper>
+                                </div> 
+
+                                <div className="col-2">                                 
+                                    <FormGrouper>
+                                        <Spandex name="fob_index" id="fob_index">{findex}</Spandex>
+                                    </FormGrouper>
+                                </div>                                  
+
                             </div>
 
 
@@ -491,6 +746,26 @@ export default class TrimForm extends Component {
                                     </LabelGrouper>
                                 </div>
 
+                                <div className="col-4">
+                                    <LabelGrouper>
+                                        <Spanner name="" id="" disabled >.</Spanner>
+                                    </LabelGrouper>
+                                </div> 
+
+                                <div className="col-2">
+                                    <FormGrouper>
+                                        <Spandex name="rw_weight" id="rw_weight">{rampWeight}</Spandex>
+                                        <Alert>{rampMssge}</Alert>
+                                    </FormGrouper>
+                                </div> 
+
+                                <div className="col-2">                                 
+                                    <FormGrouper>
+                                        <Spandex name="rw_index" id="rw_index">{rampIndex}</Spandex>
+                                        <Alert></Alert>
+                                    </FormGrouper>
+                                </div>
+
                             </div>
 
 
@@ -513,6 +788,24 @@ export default class TrimForm extends Component {
                                             AFT2
                                         </Spanner>
                                     </LabelGrouper>
+                                </div>
+
+                                <div className="col-4">
+                                    <LabelGrouper>
+                                        <Spanner name="" id="" disabled >.</Spanner>
+                                    </LabelGrouper>
+                                </div>
+
+                                <div className="col-2">
+                                    <FormGrouper>
+                                        <Input type="text" name="tf_weight" id="tf_weight" onBlur={value.handleTaxiFuel} />
+                                    </FormGrouper>
+                                </div> 
+
+                                <div className="col-2">
+                                    <FormGroupest>
+                                        <span name="tf_index" id="tf_index">{tfindex}</span>
+                                    </FormGroupest> 
                                 </div>
 
                             </div>
@@ -540,6 +833,24 @@ export default class TrimForm extends Component {
                                     </LabelGrouper>
                                 </div>
 
+                                <div className="col-4">
+                                    <LabelGrouper>
+                                        <Spanner name="" id="" disabled >.</Spanner>
+                                    </LabelGrouper>
+                                </div>
+
+                                <div className="col-2">
+                                    <FormGrouper>
+                                        <span name="tw_weight" id="tw_weight"><h5>{toffWeight} KG</h5></span>
+                                    </FormGrouper>
+                                </div>
+
+                                <div className="col-2">                                 
+                                    <FormGrouper>
+                                        <span name="tw_index" id="tw_index">{twIndex}</span>
+                                    </FormGrouper>
+                                </div>
+
                             </div>
 
 
@@ -563,6 +874,24 @@ export default class TrimForm extends Component {
                                             AFT2
                                         </Spanner>
                                     </LabelGrouper>
+                                </div>
+
+                                <div className="col-4">
+                                    <LabelGrouper>
+                                        <Spanner name="" id="" disabled >.</Spanner>
+                                    </LabelGrouper>
+                                </div>
+
+                                <div className="col-2">
+                                    <FormGrouper>
+                                        <Input type="text" name="estfuelused_weight" id="estfuelused_weight" onBlur={value.handleFused} />
+                                    </FormGrouper>
+                                </div>  
+
+                                <div className="col-2">                                 
+                                    <FormGrouper>
+                                        <span name="estfuelused_index" id="estfuelused_index"></span>
+                                    </FormGrouper>
                                 </div>
 
                             </div>
@@ -590,353 +919,72 @@ export default class TrimForm extends Component {
                                         </Spanner>
                                     </LabelGrouper>
                                 </div>
-
-                            </div>
-                                  
-                         {/*Where form labels ends*/}
-
-
-
-
-
-
-                        {/*Where numbered labels begin*/}
                                 
-
-                                    
-
-                                    
-
-                                    
-
-                                    
-
-                                    
-
-                                    
-
-                                    
-
-                                    
-
-                                    
-
-                                    
-
-
-
-                            {/*Where numbered labels end*/}
-
-
-
-
-
-                            {/*Where pax inputs begin*/}
-
-                                
-
-                                    
-
-                                    
-
-                                    
-
-                                    
-
-                                    <LabelGrouper>
-                                        <FormGroup>
-                                            <Input type="text" name="compt5_nopax" id="compt5_nopax" placeholder="Max 12" onBlur={value.handlePax5} />
-                                            <Alert>{c5errMssge}</Alert>
-                                        </FormGroup>
-                                    </LabelGrouper>
-
-                                    <LabelGrouper>
-                                        <FormGroup>
-                                            <Input type="text" name="compt6_nopax" id="compt6_nopax" placeholder="Max 12" onBlur={value.handlePax6} />
-                                            <Alert>{c6errMssge}</Alert>
-                                        </FormGroup>
-                                    </LabelGrouper>
-
-                                    <LabelGrouper>
-                                        <FormGroup>
-                                            <Input type="text" name="compt7_nopax" id="compt7_nopax" placeholder="Max 8" onBlur={value.handlePax7} />
-                                            <Alert>{c7errMssge}</Alert>
-                                        </FormGroup>
-                                    </LabelGrouper>
-
+                                <div className="col-4">
                                     <LabelGrouper>
                                         <Spanner name="" id="" disabled >.</Spanner>
                                     </LabelGrouper>
-
-                                    <FormGroup>
-                                        <Spanner name="" id="" disabled >.</Spanner>
-                                    </FormGroup>
-
-                                    <LabelGrouper>
-                                        <Spanner name="" id="" disabled >.</Spanner>
-                                    </LabelGrouper>
-
-                                    <LabelGrouper>
-                                        <Spanner name="" id="" disabled >.</Spanner>
-                                    </LabelGrouper>
-
-                                    <LabelGrouper>
-                                        <Spanner name="" id="" disabled >.</Spanner>
-                                    </LabelGrouper>
-
-                                    <LabelGrouper>
-                                        <Spanner name="" id="" disabled >.</Spanner>
-                                    </LabelGrouper>
-
-                                    <LabelGrouper>
-                                        <Spanner name="" id="" disabled >.</Spanner>
-                                    </LabelGrouper>
-
-                                    <LabelGrouper>
-                                        <Spanner name="" id="" disabled >.</Spanner>
-                                    </LabelGrouper>
-
-                                    <LabelGrouper>
-                                        <Spanner name="" id="" disabled >.</Spanner>
-                                    </LabelGrouper>
-
-                                    <LabelGrouper>
-                                        <Spanner name="" id="" disabled >.</Spanner>
-                                    </LabelGrouper>
-
-                                    <LabelGrouper>
-                                        <FormGroup>
-                                             Total Pax : {totPax}
-                                        </FormGroup>
-                                    </LabelGrouper>
-                                    
-
                                 </div>
-                            {/*Where pax inputs end*/}
 
-
-
-
-
-
-                            {/*Where weight inputs begin*/}
                                 <div className="col-2">
-                                    <LabelGrouper>
-                                        <FormGroup>
-                                            <Input name="owe_weight" id="owe_weight" placeholder="17980" disabled />
-                                        </FormGroup>
-                                    </LabelGrouper>                                    
-
-                                   
-                                        <FormGroup>
-                                            <Input name="observer_weight" id="observer_weight" onBlur={value.handleObserver} />
-                                            {obsMssge}
-                                        </FormGroup>                                     
-                                    
-                                        <FormGroup>
-                                            <Input name="wardrobe_fwd_weight" id="wardrobe_fwd_weight" onBlur={value.handleWardrobe} />       
-                                        </FormGroup>                                  
-                                    
-                                    
-                                        <LabelGrouper>
-                                            <Spandex name="pax_compt1_weight" id="pax_compt1_weight">{c1weight}KG</Spandex>
-                                        </LabelGrouper>
-                                                                           
-                                   
-                                    
-                                        <LabelGrouper>
-                                            <Spandex name="pax_compt2_weight" id="pax_compt2_weight">{c2weight}KG</Spandex>
-                                        </LabelGrouper>                                  
-                                    
-                                    <LabelGrouper>
-                                        
-                                            <Spandex name="pax_compt3_weight" id="pax_compt3_weight">{c3weight}KG</Spandex>
-                                        
-                                    </LabelGrouper>                                    
-                                    
-                                        <LabelGrouper>
-                                            <Spandex name="pax_compt4_weight" id="pax_compt4_weight">{c4weight}KG</Spandex>
-                                        </LabelGrouper>
-                                    
-                                    
-                                    <LabelGrouper>
-                                            <Spandex name="pax_compt5_weight" id="pax_compt5_weight">{c5weight}KG</Spandex>
-                                    </LabelGrouper>
-                                    
-                                    <LabelGrouper>
-                                        <FormGroup>
-                                            <Spandex name="pax_compt6_weight" id="pax_compt6_weight">{c6weight}KG</Spandex>
-                                        </FormGroup>
-                                    </LabelGrouper>
-                                    
-                                    
-                                        <LabelGrouper>
-                                            <Spandex name="pax_compt7_weight" id="pax_compt7_weight">{c7weight}KG</Spandex>
-                                        </LabelGrouper>
-                                    
-                                    
-                                    <LabelGrouper>
-                                            <Input type="text" name="bags_comptfwd_weight" id="bags_comptfwd_weight" placeholder="Max 231" onBlur={value.handleBaggFwd} />
-                                    </LabelGrouper>
-                                    
-                                    <SkiperGrouper>                                       
-                                        <Input type="text" name="bags_comptaft1_weight" id="bags_comptaft1_weight" placeholder="Max 1225" onBlur={value.handleBaggAft1} />
-                                    </SkiperGrouper>
-                                    
-                                    <LabelGrouper>
-                                        <FormGroup>
-                                            <Input type="text" name="bags_comptaft2_weight" id="bags_comptaft2_weight" placeholder="Max 454" onBlur={value.handleBaggAft2} />
-                                        </FormGroup>
-                                    </LabelGrouper>
-                                    
-
-
-                                        <FormGroup>
-                                            <Spandex name="zfw_weight" id="zfw_weight">{zfweight}</Spandex>
-                                            <Alert>{zfMssge}</Alert>
-                                        </FormGroup>
-                                                                       
-                                    
-                                    
-                                        <FormGrouper>
-                                            <Input type="text" name="fob_weight" id="fob_weight" onBlur={value.handleFuel} />
-                                        </FormGrouper>
-                                    
-                                    
-                                   
-                                        <FormGrouper>
-                                            <Spandex name="rw_weight" id="rw_weight">{rampWeight}</Spandex>
-                                            <Alert>{rampMssge}</Alert>
-                                        </FormGrouper>
-                                    
-                                    
-                                    
-                                        <FormGrouper>
-                                            <Input type="text" name="tf_weight" id="tf_weight" onBlur={value.handleTaxiFuel} />
-                                        </FormGrouper>
-                                    
-                                    
-                                    
-                                        <FormGrouper>
-                                            <span name="tw_weight" id="tw_weight"><h5>{toffWeight} KG</h5></span>
-                                        </FormGrouper>
-                                    
-                                    
-                                        <FormGrouper>
-                                            <Input type="text" name="estfuelused_weight" id="estfuelused_weight" onBlur={value.handleFused} />
-                                        </FormGrouper>
-                                    
-                                    
                                     <LabelGrouper>
                                         <FormGrouper>
                                             <span name="lw_weight" id="lw_weight"><h5>{lweight} KG</h5></span>
                                         </FormGrouper>
-                                    </LabelGrouper>                                   
+                                    </LabelGrouper> 
+                                </div>  
 
-                                </div>
-                            {/*Where weight inputs end*/}
-
-
-
-
-
-
-                            {/*Where index displays begin*/}
-                                <div className="col-2">
-
-                                    <LabelGrouper>
-                                        <Spandex name="owe_index" id="owe_index">90.5</Spandex>
-                                    </LabelGrouper>
-
-                                    <LabelGrouper>
-                                            <Spandex name="observer_index" id="observer_index">{obsindex}</Spandex>
-                                    </LabelGrouper>                                    
-                                   
-                                  
-                                    <FormGroup>
-                                        <Spandex name="wardrobe_fwd_index" id="wardrobe_fwd_index" >{windex}</Spandex>
-                                    </FormGroup>
-                                   
-                                    
-                                   
-                                <LabelGroupie>                                    
-                                    <Spandex name="pax_compt1_index" id="pax_compt1_index">{c1index}</Spandex>
-                                </LabelGroupie>                                    
-                                    
-                                <LabelGrouper>
-                                    <Spandex name="pax_compt2_index" id="pax_compt2_index">{c2index}</Spandex>
-                                </LabelGrouper>
-
-                                <LabelGrouper>
-                                    <FormGroup>
-                                        <Spandex name="pax_compt3_index" id="pax_compt3_index">{c3index}</Spandex>
-                                    </FormGroup>
-                                </LabelGrouper>
-                                
-                                    <LabelGrouper>
-                                        <Spandex name="pax_compt4_index" id="pax_compt4_index">{c4index}</Spandex>
-                                    </LabelGrouper>
-
-                                    <LabelGrouper>
-                                        <Spandex name="pax_compt5_index" id="pax_compt5_index">{c5index}</Spandex>
-                                    </LabelGrouper>
-
-                                    <LabelGrouper>
-                                        <Spandex name="pax_compt6_index" id="pax_compt6_index">{c6index}</Spandex>
-                                    </LabelGrouper>
-
-                                    <LabelGrouper>
-                                        <Spandex name="pax_compt7_index" id="pax_compt7_index">{c7index}</Spandex>
-                                    </LabelGrouper>
-
-                                    <FormGroup>
-                                        <Spandex name="bags_comptfwd_index" id="bags_comptfwd_index">{bfdindex}</Spandex>
-                                    </FormGroup>
-
-                                    <SkipGrouper>
-                                        <Spandex name="bags_comptaft1_index" id="bags_comptaft1_index">{ba1index}</Spandex>
-                                    </SkipGrouper>
-
-                                    <FormGrouper>
-                                        <Spandex name="bags_comptaft2_index" id="bags_comptaft2_index">{ba2index}</Spandex>
-                                    </FormGrouper>
-
-                                    <Groupest>
-                                        <Spandex name="zfw_index" id="zfw_index">{zfindex}</Spandex>
-                                    </Groupest>
-
-                                    <FormGrouper>
-                                        <Spandex name="fob_index" id="fob_index">{findex}</Spandex>
-                                    </FormGrouper>
-
-                                    <FormGrouper>
-                                        <Spandex name="rw_index" id="rw_index">{rampIndex}</Spandex>
-                                        <Alert></Alert>
-                                    </FormGrouper>
-
-                                    <FormGroupest>
-                                        <span name="tf_index" id="tf_index">{tfindex}</span>
-                                    </FormGroupest>
-
-                                    <FormGrouper>
-                                        <span name="tw_index" id="tw_index">{twIndex}</span>
-                                    </FormGrouper>
-
-                                    <FormGrouper>
-                                        <span name="estfuelused_index" id="estfuelused_index"></span>
-                                    </FormGrouper>
-
+                                <div className="col-2">                                 
                                     <FormGroup>
                                         <span name="lw_index" id="lw_index">{lindex}</span>
                                     </FormGroup>
-
-                                    <LabelGrouper>
-                                        <Spandex name="totindex" id="totindex"></Spandex>
-                                    </LabelGrouper>
-                                </div>
-                            {/*Where index displays end*/}
+                                </div>                              
 
                             </div>
+
+
+
+
+
+
+                            <div className="row">
+                                <div className="col-3">
+                                    <LabelGrouper>                                        
+                                        Totals                                       
+                                    </LabelGrouper>
+                                </div>
+
+                                <div className="col-1">
+                                    <LabelGrouper>
+                                        <Spanner color="muted">
+                                            AFT2
+                                        </Spanner>
+                                    </LabelGrouper>
+                                </div>
+                                
+                                <div className="col-4">
+                                    <LabelGrouper>
+                                        <FormGroup>
+                                            Total Pax : {totPax}
+                                            <Alert>{totPaxMssge}</Alert>
+                                        </FormGroup>
+                                    </LabelGrouper>
+                                </div>
+
+                                <div className="col-2">
+                                    <LabelGrouper>
+                                        <FormGrouper>
+                                            <Spandex name="total_weight" id="total_weight">.</Spandex>
+                                        </FormGrouper>
+                                    </LabelGrouper> 
+                                </div>                                                          
+                                
+                                <div className="col-2">                                 
+                                    <LabelGrouper>
+                                        <Spandex name="totindex" id="totindex">{totIndex}</Spandex>
+                                    </LabelGrouper>
+                                </div>
+                            </div>            
 
                     </FormContainer>
 

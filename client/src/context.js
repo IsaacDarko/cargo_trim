@@ -153,7 +153,7 @@ class DataProvider extends Component {
 
         ],
 
-        totalTotal:{}
+        totalIndex:{}
               
     }
 

@@ -2,7 +2,7 @@ import React from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import {Switch, Route} from 'react-router-dom';
 import Navbar from './components/Navbar';
-import Form from './components/Form';
+import Form from './components/Form2';
 import Log from './components/Log';
 import Result from './components/Result';
 import ErrorPage from './components/ErrorPage';
