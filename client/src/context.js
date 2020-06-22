@@ -141,23 +141,299 @@ class DataProvider extends Component {
         ],
         zeroFuelWeight:{},
         zeroFuelWeightIndex:{},
-
         fobData: {},
         rampData: {},    
         taxiFuelData: {},
         takeOffData:{},
-
+        filledSheetData:[
+            {
+                field : "owe_weight",
+                weight : 17980,
+                index : 90.5
+            },
+            {
+                field : "observer_weight",
+                weight : 0,
+                index : 0
+            },
+            {
+                field : "wardrobe_fwd_weight",
+                weight : 0,
+                index : 0
+            },
+            {
+                field : "compt1_nopax",
+                weight : 0,
+                index : 0
+            },
+            {
+                field : "compt2_nopax",
+                weight : 0,
+                index : 0
+            },
+            {
+                field : "compt3_nopax",
+                weight : 0,
+                index : 0
+            },
+            {
+                field : "compt4_nopax",
+                weight : 0,
+                index : 0
+            },
+            {
+                field : "compt5_nopax",
+                weight : 0,
+                index : 0
+            },
+            {
+                field : "compt6_nopax",
+                weight : 0,
+                index : 0
+            },
+            {
+                field : "compt7_nopax",
+                weight : 0,
+                index : 0
+            },
+            {
+                field : "bags_comptfwd_weight",
+                weight : 0,
+                index : 0
+            },
+            {
+                field : "bags_comptaft1_weight",
+                weight : 0,
+                index : 0
+            },
+            {
+                field : "bags_comptaft2_weight",
+                weight : 0,
+                index : 0
+            },
+            {
+                field : "zerofuel",
+                weight : 0,
+                index : 0
+            },
+            {
+                field : "fuelonboard",
+                weight : 0,
+                index : 0
+            },
+            {
+                field : "ramp",
+                weight : 0,
+                index : 0
+            },
+            {
+                field : "taxi",
+                weight : 0,
+                index : 0
+            },
+            {
+                field : "takeoff",
+                weight : 0,
+                index : 0
+            },
+            {
+                field : "estfuelused",
+                weight : 0,
+                index : 0
+            },
+            {
+                field : "landing",
+                weight : 0,
+                index : 0
+            }
+        ],
         estimatedFuelUsedData : {},
         landingData:{},       
-        allIndices:[
-
-        ],
-
-        totalIndex:{}
+        allIndexList:[],
+        allWeightsList:[],
+        totalIndex:{},
+        graphData:{}        
               
     }
 
 
+
+    componentWillMount() {
+        this.setUpGraph();
+    }
+
+
+
+
+    setUpGraph = () =>{
+        const pointX1 = this.state.landingData.index;
+        const pointY1 = this.state.landingData.weight;
+
+        const pointX2 = this.state.takeOffData.index;
+        const pointY2 = this.state.takeOffData.weight;
+
+        console.log(`the landingIndex= ${pointX1}, the landingWeight= ${pointY1}, the takeoffIndex= ${pointX2}, the takeoffWeight= ${pointY2}`)
+
+        this.setState({
+            graphData: {
+                data:{
+                    datasets:[
+                        {                            
+                            label: 'MAC(%)',
+                            data: [ 
+                                {
+                                    x: 77,
+                                    y: 16000 
+                                },
+                                {
+                                    x:  80, 
+                                    y: 16000
+                                },
+                                {
+                                    x: 83,
+                                    y: 16000
+                                }, 
+                                {
+                                    x: 86, 
+                                    y: 16000
+                                }, 
+                                {
+                                    x: 89,
+                                    y: 16000
+                                }, 
+                                {
+                                    x: 92,
+                                    y: 16000
+                                }, 
+                                {
+                                    x: 95, 
+                                    y: 16000
+                                }, 
+                                {
+                                    x: 98,
+                                    y: 16000
+                                }, 
+                                {
+                                    x: 101,
+                                    y: 16000
+                                }, 
+                                {
+                                    x: 104,
+                                    y: 16000
+                                },
+                                { 
+                                    x: 107,
+                                    y: 16000
+                                },
+                                {
+                                    x: 110,
+                                    y: 16000
+                                }, 
+                                {
+                                    x:  113,
+                                    y: 16000
+                                }
+                            ],
+                            fill: true,                                                        
+                            type: 'line',
+                            lineTension: 0.1,
+                            fillColor: "rgba(151,187,205,0.2)",
+                            strokeColor: "rgba(151,187,205,1)",
+                            pointColor: "rgba(151,187,205,1)",
+                            pointStrokeColor: "#fff"                         
+                        },
+                        {
+                            label: 'WEIGHT',
+                            data: [ 
+                                {
+                                    x: pointX1, 
+                                    y: pointY1 
+                                },
+                                {
+                                    x: pointX2,
+                                    y: pointY2
+                                } 
+                             ],
+                            fill: true,
+                            lineTension: 0.1,
+                            fillColor: "rgba(151,187,205,0.2)",
+                            strokeColor: "rgba(151,187,205,1)",
+                            pointColor: "rgba(151,187,205,1)",
+                            pointStrokeColor: "#fff"                            
+                        },                       
+                        {                            
+                            label: 'INDEX',
+                            data: [  
+                                
+                            ],
+                            fill: true,
+                            lineTension: 0.1,
+                            fillColor: "rgba(151,187,205,0.2)",
+                            strokeColor: "rgba(151,187,205,1)",
+                            pointColor: "rgba(151,187,205,1)",
+                            pointStrokeColor: "#fff"                         
+                        }                        
+                    ]
+    
+                },
+    
+                options: {
+                    title: {
+                        display: true,
+                        text:'Aircraft Center Gravity Graph',
+                        fontSize: 27
+                    },
+
+                    scales: {
+                        yAxes: [{
+                            stacked: true,
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'Weight (kg)'
+                              },
+                            ticks: {
+                                beginAtZero:false,
+                                min: 16000,
+                                stepSize: 1000 ,
+                                max: 30000    
+                            }
+                          }],
+                          xAxes: [{
+                            type: 'linear',
+                            position: 'top',
+                            scaleLabel: {
+                                display: true,
+                                labelString: 'Index'
+                              },
+                            ticks: {
+                                beginAtZero:false,
+                                min: 65,
+                                stepSize: 5 ,
+                                max: 125    
+                            },
+                            
+                        }]
+                       }
+                }
+            } 
+            
+        })
+
+    }
+
+
+
+
+    plotTakeoffPoint = () =>{
+        this.setUpGraph();
+    }
+
+
+
+
+    plotLandingPoint = () =>{
+        this.setUpGraph();
+    }
 
 
 
@@ -166,6 +442,7 @@ class DataProvider extends Component {
         const {name, value} = e.target
         localStorage.setItem( name, value );
     }
+
 
 
 
@@ -192,6 +469,19 @@ class DataProvider extends Component {
 
 
 
+    calcTotalIndex = () =>{
+        const { index : tOIndex } = this.state.takeOffData;
+        const { index : efIndex } = this.state.estimatedFuelUsedData;
+
+        const totalIndex = tOIndex - efIndex;
+        this.setState({ totalIndex :{
+            'index' : totalIndex
+        }
+    })
+    }
+
+    
+    
 
     calcZfWeight = () =>{
         const zfw = this.state.zfData;
@@ -206,7 +496,7 @@ class DataProvider extends Component {
             this.setState(()=>{
                 return{ zeroFuelWeight :{
                     "weight": zeroFuelWeight,
-                    "message": 'Zero Fuel Weight is Too High'
+                    "message": 'ZeroFuelWeight is Too High'
                 } }
             })
         }else{
@@ -231,11 +521,11 @@ class DataProvider extends Component {
         console.log(sumUp);
         const zeroFuelIndex = sumUp.reduce((a,b) => a+b, 0);
         console.log(zeroFuelIndex);
-        const zfwIndex = zeroFuelIndex.toFixed(1)
+        const zfwIndex = parseFloat(zeroFuelIndex).toFixed(1);
         this.setState(()=>{
             return{ zeroFuelWeightIndex :{
                 "index" : zfwIndex ,
-                "message": 'The zero fuel Index was calculated successfully, everything looks OK'
+                "message": 'Everything looks OK'
             } }
         })
     }
@@ -252,44 +542,82 @@ class DataProvider extends Component {
         axios.post('/api/fuel', {
             weight
         }).then((fuelData)=>{
-            const fuel = fuelData.data;
-            const { index } = fuel;
-            const rampW = this.state.rampData.weight
-            console.log(rampW);
-            if( !rampW || rampW !== '' || rampW === 0 ){
+            const ramp = this.state.rampData;
+            const { weight, index } = ramp
+            if( weight === undefined || index === undefined ){
                 this.setState(()=>{
-                    return { taxiFuelData:{
-                        "weight" : tFW,
-                        "index" : index
+                    return { takeOffData :{
+                        'weight' : 0,
+                        'index' : 0,
+                        'message' : "Ramp Weight undefined"
                     } }
                 })
-                console.log(this.state.taxiFuelWeight);
-                const rampData = this.state.rampData;
-                const { weight, index : rindex } = rampData;
-                const rweight = parseInt(weight);
-                const takeOffWeight = rweight - tFW;
-                const takeOffIndex = rindex - index;
-                console.log(takeOffIndex);
-                this.setState(()=>{
-                    return{ takeOffData: {
-                        "weight" : takeOffWeight,
-                        "index" : takeOffIndex
-                    } }
-                })
-                console.log(this.state.takeOffData);        
-                localStorage.removeItem('tf_weight');
-            
             }else{
-                this.setState(()=>{
-                    return{ takeOffData: {
-                        "weight" : 0,
-                        "index" : 0,
-                        "message" : 'Ramp information is not set yet'
-                    } }
-                })
-                console.log(this.state.takeOffData);
-                localStorage.removeItem('tf_weight');
+
+                const fuel = fuelData.data;
+                const { weight, index } = fuel;
+                const rampW = this.state.rampData.weight;
+                console.log(rampW);
+                const filledIndex = this.state.filledSheetData.findIndex(element => element.field === "taxi" );
+                let graphArray = [...this.state.filledSheetData];
+                graphArray[filledIndex] = {...graphArray[filledIndex], weight, index}
+                this.setState({
+                    filledSheetData: graphArray,
+                    });
+                console.log(this.state.filledSheetData);
+
+                
+                if( !rampW || rampW !== '' || rampW === 0 ){
+                    this.setState(()=>{
+                        return { taxiFuelData:{
+                            "weight" : tFW,
+                            "index" : index
+                        } }
+                    })
+                    console.log(this.state.taxiFuelData);
+                    const rampData = this.state.rampData;
+                    const { weight, index : rindex } = rampData;
+                    const rweight = parseInt(weight);
+                    const takeOffWeight = rweight - tFW;
+                    const takeOffIndex = rindex - index;
+                    const tkoffIndex = takeOffIndex.toFixed(1);
+                    console.log(takeOffIndex);
+
+                    if( takeOffWeight > 29257 ){
+                        this.setState(()=>{
+                            return{ takeOffData: {
+                                'weight' : takeOffWeight,
+                                'index' : tkoffIndex,
+                                'message' : "TakeOff Weight Too High"
+                            } }
+                        })
+                        console.log(this.state.takeOffData);        
+                        localStorage.removeItem('tf_weight');
+
+                    }else{
+                        this.setState(()=>{
+                            return{ takeOffData: {
+                                "weight" : takeOffWeight,
+                                "index" : tkoffIndex
+                            } }
+                        })
+                        console.log(this.state.takeOffData);        
+                        localStorage.removeItem('tf_weight');
+                    }                
+                }else{
+                    this.setState(()=>{
+                        return{ takeOffData: {
+                            "weight" : 0,
+                            "index" : 0,
+                            "message" : 'Ramp information is not set yet'
+                        } }
+                    })
+                    console.log(this.state.takeOffData);
+                    localStorage.removeItem('tf_weight');
+                }
+
             }
+            
         })    
         
     }
@@ -301,27 +629,72 @@ class DataProvider extends Component {
 
     handleFused = (e) =>{
         this.onChange(e);
-        const fuelUsed = localStorage.getItem('estfuelused_weight');
-        this.setState(()=>{
-            return{ estimatedFuelUsed:{
-                "weight" : fuelUsed
-            }}
-        })
+        const weight = localStorage.getItem('estfuelused_weight');
+        axios.post('/api/fuel', {
+            weight
+        }).then((usedFuelData) => {
+            const takeOff = this.state.takeOffData;
+            console.log(takeOff);
+            const { weight:tW, index:tI } = takeOff;
+            console.log(`${tW} and ${tI}`)
+            if( tW === undefined || tI === undefined || tW === 0 || tI === 0 ){
+                this.setState({ landingData:{
+                    'weight' : 0,
+                    'index' : 0,
+                    'message': "TakeOff weight: undefined"
+                }
+            })
 
-        const fuelusedWeight = this.state.takeOffData;
-        const { weight, index } = fuelusedWeight;
-        console.log(index);
-        const toffWeight = parseInt(weight);
-        const landingWeight = toffWeight - fuelUsed;
-        this.setState(()=>{
-            return{ landingData:{
-                "weight" : landingWeight,
-                "index" : index
-            } }
-        })
+            }else{
+                console.log(usedFuelData);
+                const ufData = usedFuelData.data;
+                const { weight, index } = ufData;
+                console.log(`${index} and ${weight}`);
+                this.setState({ estimatedFuelUsedData:{
+                        weight,
+                        index
+                    }
+                })
+                console.log(this.state);
+                const takeOff = this.state.takeOffData;
+                const { 'weight' : tOWeight, 'index': tOIndex } = takeOff;
+                console.log(index);
+                const toffWeight = parseInt(tOWeight);
+                const toffIndex = parseFloat(tOIndex);
+                const landingWeight = toffWeight - weight;
+                const landingIndex = toffIndex - index;
+                const landIndex = landingIndex.toFixed(1);
+                if( landingWeight <= 28099 ){
+                    this.setState(()=>{
+                        return{ landingData:{
+                            "weight" : landingWeight,
+                            "index" : landIndex
+                        } }
+                    })
+                    localStorage.removeItem('estfuelused_weight');
+                    this.setUpGraph();
+                }else{
+                    this.setState(()=>{
+                        return{ landingData:{
+                            'weight' : landingWeight,
+                            'index' : landIndex,
+                            'message': "Landing Weight Too High"
+                            
+                        } }
+                    })
+                    localStorage.removeItem('estfuelused_weight');
+                    this.setUpGraph();
+                }             
 
-        localStorage.removeItem('estfuelused_weight');
+            }
+           
+        })
+        
     }
+
+
+
+    
 
 
 
@@ -356,9 +729,17 @@ class DataProvider extends Component {
                     });
                 this.calcZfIndex();
 
+                const filledIndex = this.state.filledSheetData.findIndex(element => element.field === "observer_weight" );
+                let graphArray = [...this.state.filledSheetData];
+                graphArray[filledIndex] = {...graphArray[filledIndex], weight, index}
+                this.setState({
+                    filledSheetData: graphArray,
+                    });
+                console.log(this.state.filledSheetData);
+
                 localStorage.removeItem('observer_weight');
                 }
-            
+            this.setUpGraph()
         })
     }
 
@@ -394,6 +775,14 @@ class DataProvider extends Component {
                     zfData: finalArray,
                     });
             this.calcZfIndex();
+
+            const filledIndex = this.state.filledSheetData.findIndex(element => element.field === "wardrobe_fwd_weight" );
+                let graphArray = [...this.state.filledSheetData];
+                graphArray[filledIndex] = {...graphArray[filledIndex], weight, index}
+                this.setState({
+                    filledSheetData: graphArray,
+                    });
+                console.log(this.state.filledSheetData);
 
             localStorage.removeItem('wardrobe_fwd_weight');
         })
@@ -445,7 +834,14 @@ class DataProvider extends Component {
                     zfData: finalArray,
                     });
                 this.calcZfIndex();
-                
+
+                const filledIndex = this.state.filledSheetData.findIndex(element => element.field === "compt1_nopax" );
+                let graphArray = [...this.state.filledSheetData];
+                graphArray[filledIndex] = {...graphArray[filledIndex], weight, index}
+                this.setState({
+                    filledSheetData: graphArray,
+                    });
+                console.log(this.state.filledSheetData);
                 localStorage.removeItem('compt1_nopax');
             }else{
                 console.log(status);
@@ -498,6 +894,14 @@ class DataProvider extends Component {
                     });
                 this.calcZfIndex();
 
+                const filledIndex = this.state.filledSheetData.findIndex(element => element.field === "compt2_nopax" );
+                let graphArray = [...this.state.filledSheetData];
+                graphArray[filledIndex] = {...graphArray[filledIndex], weight, index}
+                this.setState({
+                    filledSheetData: graphArray,
+                    });
+                console.log(this.state.filledSheetData);
+
                 localStorage.removeItem('compt2_nopax');
             }else{
                 console.log(status);
@@ -549,6 +953,14 @@ class DataProvider extends Component {
                     zfData: finalArray,
                     });
                 this.calcZfIndex();
+
+                const filledIndex = this.state.filledSheetData.findIndex(element => element.field === "compt3_nopax" );
+                let graphArray = [...this.state.filledSheetData];
+                graphArray[filledIndex] = {...graphArray[filledIndex], weight, index}
+                this.setState({
+                    filledSheetData: graphArray,
+                    });
+                console.log(this.state.filledSheetData);
 
                 localStorage.removeItem('compt3_nopax');
             }else{
@@ -606,6 +1018,14 @@ class DataProvider extends Component {
                     });
                 this.calcZfIndex();
 
+                const filledIndex = this.state.filledSheetData.findIndex(element => element.field === "compt4_nopax" );
+                let graphArray = [...this.state.filledSheetData];
+                graphArray[filledIndex] = {...graphArray[filledIndex], weight, index}
+                this.setState({
+                    filledSheetData: graphArray,
+                    });
+                console.log(this.state.filledSheetData);
+
                 localStorage.removeItem('compt4_nopax');
             }else{
                 console.log(status);
@@ -658,6 +1078,14 @@ class DataProvider extends Component {
                     zfData: finalArray,
                     });
                 this.calcZfIndex();
+
+                const filledIndex = this.state.filledSheetData.findIndex(element => element.field === "compt5_nopax" );
+                let graphArray = [...this.state.filledSheetData];
+                graphArray[filledIndex] = {...graphArray[filledIndex], weight, index}
+                this.setState({
+                    filledSheetData: graphArray,
+                    });
+                console.log(this.state.filledSheetData);
 
                 localStorage.removeItem('compt5_nopax');
             }else{
@@ -713,6 +1141,14 @@ class DataProvider extends Component {
                     });
                 this.calcZfIndex();
 
+                const filledIndex = this.state.filledSheetData.findIndex(element => element.field === "compt6_nopax" );
+                let graphArray = [...this.state.filledSheetData];
+                graphArray[filledIndex] = {...graphArray[filledIndex], weight, index}
+                this.setState({
+                    filledSheetData: graphArray,
+                    });
+                console.log(this.state.filledSheetData);
+
                 localStorage.removeItem('compt6_nopax');
             }else{
                 console.log(status);
@@ -767,6 +1203,14 @@ class DataProvider extends Component {
                     });
                 this.calcZfIndex();
 
+                const filledIndex = this.state.filledSheetData.findIndex(element => element.field === "compt7_nopax" );
+                let graphArray = [...this.state.filledSheetData];
+                graphArray[filledIndex] = {...graphArray[filledIndex], weight, index}
+                this.setState({
+                    filledSheetData: graphArray,
+                    });
+                console.log(this.state.filledSheetData);
+
                 localStorage.removeItem('compt7_nopax');
             }else{
                 console.log(status);
@@ -813,6 +1257,14 @@ class DataProvider extends Component {
                     });
                 this.calcZfIndex();
 
+                const filledIndex = this.state.filledSheetData.findIndex(element => element.field === "bags_comptfwd_weight" );
+                let graphArray = [...this.state.filledSheetData];
+                graphArray[filledIndex] = {...graphArray[filledIndex], weight, index}
+                this.setState({
+                    filledSheetData: graphArray,
+                    });
+                console.log(this.state.filledSheetData);
+
                 localStorage.removeItem('bags_comptfwd_weight');
             }else{
                 console.log(status);
@@ -857,6 +1309,14 @@ class DataProvider extends Component {
                     zfData: finalArray,
                     });
                 this.calcZfIndex();
+
+                const filledIndex = this.state.filledSheetData.findIndex(element => element.field === "bags_comptaft1_weight" );
+                let graphArray = [...this.state.filledSheetData];
+                graphArray[filledIndex] = {...graphArray[filledIndex], weight, index}
+                this.setState({
+                    filledSheetData: graphArray,
+                    });
+                console.log(this.state.filledSheetData);
 
                 localStorage.removeItem('bags_comptaft1_weight');
             }else{
@@ -903,6 +1363,14 @@ class DataProvider extends Component {
                     zfData: finalArray,
                     });
                 this.calcZfIndex();
+
+                const filledIndex = this.state.filledSheetData.findIndex(element => element.field === "bags_comptaft2_weight" );
+                let graphArray = [...this.state.filledSheetData];
+                graphArray[filledIndex] = {...graphArray[filledIndex], weight, index}
+                this.setState({
+                    filledSheetData: graphArray,
+                    });
+                console.log(this.state.filledSheetData);
                 localStorage.removeItem('bags_comptaft2_weight');
             }else{
                 console.log(status);
@@ -955,19 +1423,20 @@ class DataProvider extends Component {
             console.log(this.state.rampData);
 
         }else{
-            const initWeight = parseInt(zeroFuelWeight);
-            const initIndex = parseInt(zeroFuelIndex);
-            const fweight = parseInt(fuelOB);
-            const findex = parseInt(fuelIndex);
+            const initWeight = parseFloat(zeroFuelWeight);
+            const initIndex = parseFloat(zeroFuelIndex);
+            const fweight = parseFloat(fuelOB);
+            const findex = parseFloat(fuelIndex);
             const rampWeight = fweight + initWeight;
             const rampIndex = findex + initIndex;
+            const rIndex = rampIndex.toFixed(1);
             console.log(`this is the ramp weight ${rampWeight}`);
             console.log(`this is the ramp index ${rampIndex}`);
             if( rampWeight > 29347 ){
                 this.setState(()=>{
                     return{ rampData:{
                         'weight' : rampWeight,
-                        'index' : rampIndex,
+                        'index' : rIndex,
                         'succMssge': "",
                         'errMssge': "Ramp weight is Too High"
                     }}
@@ -981,6 +1450,14 @@ class DataProvider extends Component {
                         'errMssge': ""
                     }}
                 })
+
+                const filledIndex = this.state.filledSheetData.findIndex(element => element.field === "ramp" );
+                let graphArray = [...this.state.filledSheetData];
+                graphArray[filledIndex] = {...graphArray[filledIndex], 'weight': rampWeight, 'index': rampIndex}
+                this.setState({
+                    filledSheetData: graphArray,
+                    });
+                console.log(this.state.filledSheetData);
             }
         }
     }
@@ -997,17 +1474,30 @@ class DataProvider extends Component {
         }).then((fuelData) => {
             const fob = fuelData.data;
             console.log(fob);
-            const { index } = fob;
+            const { weight, index } = fob;
             localStorage.setItem('fobIndex', index);
             this.setState(()=>{
                 return { fobData : fob }
             })
             this.handleFOB(e);
+
+            const filledIndex = this.state.filledSheetData.findIndex(element => element.field === "fuelonboard" );
+            let graphArray = [...this.state.filledSheetData];
+            graphArray[filledIndex] = {...graphArray[filledIndex], weight, index}
+            this.setState({
+                filledSheetData: graphArray,
+                });
+            console.log(this.state.filledSheetData);
+
             localStorage.removeItem('fob_weight');
         })
     }
 
 
+
+
+
+   
 
 
 

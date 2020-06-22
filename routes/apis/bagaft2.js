@@ -176,7 +176,7 @@ router.post('/', (req, res) => {
             //comparing if weight is closer to the max or min range and selecting an index accordingly    
             if( higher > lower ){
                 const intIndex = 6.4;
-                const index = intIndex.toFixed(1);
+                const index = parseFloat(intIndex.toFixed(1));
                 const numWeight = parseInt(weight);
                 res.status(200).json({
                     index,
@@ -199,7 +199,7 @@ router.post('/', (req, res) => {
             //comparing if weight is closer to the max or min range and selecting an index accordingly    
             if( higher > lower ){
                 const intIndex = 7.4;
-                const index = intIndex.toFixed(1);
+                const index = parseFloat(intIndex.toFixed(1));
                 const numWeight = parseInt(weight);
                 res.status(200).json({
                     index,
@@ -222,7 +222,7 @@ router.post('/', (req, res) => {
             //comparing if weight is closer to the max or min range and selecting an index accordingly    
             if( higher > lower ){
                 const intIndex = 8.4;
-                const index = intIndex.toFixed(1);
+                const index = parseFloat(intIndex.toFixed(1));
                 const numWeight = parseInt(weight);
                 res.status(200).json({
                     index,
@@ -245,7 +245,7 @@ router.post('/', (req, res) => {
             //comparing if weight is closer to the max or min range and selecting an index accordingly    
             if( higher > lower ){
                 const intIndex = 9.5;
-                const index = intIndex.toFixed(1);
+                const index = parseFloat(intIndex.toFixed(1));
                 const numWeight = parseInt(weight);
                 res.status(200).json({
                     index,
@@ -268,7 +268,7 @@ router.post('/', (req, res) => {
             //comparing if weight is closer to the max or min range and selecting an index accordingly    
             if( higher > lower ){
                 const intIndex = 10.5;
-                const index = intIndex.toFixed(1);
+                const index = parseFloat(intIndex.toFixed(1));
                 const numWeight = parseInt(weight);
                 res.status(200).json({
                     index,
@@ -291,7 +291,7 @@ router.post('/', (req, res) => {
             //comparing if weight is closer to the max or min range and selecting an index accordingly    
             if( higher > lower ){
                 const intIndex = 11.5;
-                const index = intIndex.toFixed(1);
+                const index = parseFloat(intIndex.toFixed(1));
                 const numWeight = parseInt(weight);
                 res.status(200).json({
                     index,
@@ -314,7 +314,7 @@ router.post('/', (req, res) => {
             //comparing if weight is closer to the max or min range and selecting an index accordingly    
             if( higher > lower ){
                 const intIndex = 12.5;
-                const index = intIndex.toFixed(1);
+                const index = parseFloat(intIndex.toFixed(1));
                 const numWeight = parseInt(weight);
                 res.status(200).json({
                     index,
@@ -337,7 +337,7 @@ router.post('/', (req, res) => {
             //comparing if weight is closer to the max or min range and selecting an index accordingly    
             if( higher > lower ){
                 const intIndex = 13.5;
-                const index = intIndex.toFixed(1);
+                const index = parseFloat(intIndex.toFixed(1));
                 const numWeight = parseInt(weight);
                 res.status(200).json({
                     index,
@@ -360,7 +360,7 @@ router.post('/', (req, res) => {
             //comparing if weight is closer to the max or min range and selecting an index accordingly    
             if( higher > lower ){
                 const intIndex = 14.6;
-                const index = intIndex.toFixed(1);
+                const index = parseFloat(intIndex.toFixed(1));
                 const numWeight = parseInt(weight);
                 res.status(200).json({
                     index,
@@ -383,7 +383,7 @@ router.post('/', (req, res) => {
             //comparing if weight is closer to the max or min range and selecting an index accordingly    
             if( higher > lower ){
                 const intIndex = 15.6;
-                const index = intIndex.toFixed(1);
+                const index = parseFloat(intIndex.toFixed(1));
                 const numWeight = parseInt(weight);
                 res.status(200).json({
                     index,
@@ -406,7 +406,7 @@ router.post('/', (req, res) => {
             //comparing if weight is closer to the max or min range and selecting an index accordingly    
             if( higher > lower ){
                 const intIndex = 16.6;
-                const index = intIndex.toFixed(1);
+                const index = parseFloat(intIndex.toFixed(1));
                 const numWeight = parseInt(weight);
                 res.status(200).json({
                     index,
@@ -429,7 +429,7 @@ router.post('/', (req, res) => {
             //comparing if weight is closer to the max or min range and selecting an index accordingly    
             if( higher > lower ){
                 const intIndex = 17.6;
-                const index = intIndex.toFixed(1);
+                const index = parseFloat(intIndex.toFixed(1));
                 const numWeight = parseInt(weight);
                 res.status(200).json({
                     index,
@@ -453,7 +453,7 @@ router.post('/', (req, res) => {
                     index,
                     weight : numWeight
                 })
-        }
+        }  
 
 
 

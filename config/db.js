@@ -1,4 +1,4 @@
 const Sequelize = require('sequelize');
 const config = require('config');
 
-module.exports = new Sequelize( 'passion_calc_db', 'root', '', config.get('sqlConnect'));
+module.exports = new Sequelize( 'passion_cargo_trim', 'root', '', config.get('sqlConnect'));

@@ -4,6 +4,7 @@ import {
 } from 'reactstrap';
 import styled from 'styled-components';
 import schematics from '../diagram.png';
+import Graph from './Graph'
 import { DataConsumer } from '../context';
 
 export default class TrimForm extends Component {
@@ -30,9 +31,11 @@ export default class TrimForm extends Component {
                 const { index: tfindex } = value.taxiFuelData;
                 const { weight: rampWeight, index: rampIndex, errMssge: rampMssge } = value.rampData;
                 const { index: findex } = value.fobData
-                const { weight : toffWeight, index : twIndex } = value.takeOffData;
-                const { weight: lweight, index: lindex } = value.landingData;
+                const { weight : toffWeight, index : twIndex, message: tWMssge } = value.takeOffData;
+                const { weight: fusedWeight, index: fusedIndex } = value.estimatedFuelUsedData;
+                const { weight: lweight, index: lindex, message: lmssge } = value.landingData;
                 const {index : totIndex} = value.totalIndex;
+                const { data, options } = value.graphData;
                  return( 
                 
                 
@@ -41,7 +44,7 @@ export default class TrimForm extends Component {
                 <Form>
                     <div className="row">
 
-                    <FormContainer className="col-8">
+                    <FormContainer className="col-7">
                             {/*Header Row  -----  Where headers begin*/}
                         <div className="row">
                             <div className="col-3">
@@ -49,7 +52,7 @@ export default class TrimForm extends Component {
                             <div className="col-1">
                             </div>
 
-                            <Labeller className="col-4">                                
+                            <Labeller className="col-3">                                
                                 <h6>NO. PAX</h6>
                             </Labeller> 
 
@@ -85,7 +88,7 @@ export default class TrimForm extends Component {
                                     </LabelGrouper>
                                 </div>
 
-                                <div className="col-4">                                    
+                                <div className="col-3">                                    
                                     <FormGroup>
                                         <Spanner name="" id="" disabled >.</Spanner>
                                     </FormGroup>
@@ -125,7 +128,7 @@ export default class TrimForm extends Component {
                                     </LabelGrouper>
                                 </div>
 
-                                <div className="col-4"> 
+                                <div className="col-3"> 
                                     <LabelGrouper>
                                         <Spanner name="" id="" disabled >.</Spanner>
                                     </LabelGrouper>
@@ -167,7 +170,7 @@ export default class TrimForm extends Component {
                                 </div>
 
                                 
-                                <div className="col-4">
+                                <div className="col-3">
                                     <LabelGrouper>
                                         <Spanner name="" id="" disabled >.</Spanner>
                                     </LabelGrouper>
@@ -211,7 +214,7 @@ export default class TrimForm extends Component {
                                     </LabelGrouper>
                                 </div>
 
-                                <div className="col-4">                                    
+                                <div className="col-3">                                    
                                     <LabelGrouper>
                                         <FormGroup>
                                             <Input type="text" name="compt1_nopax" id="compt1_nopax" placeholder="Max 10" onBlur={value.handlePax1} />
@@ -227,9 +230,9 @@ export default class TrimForm extends Component {
                                 </div>
 
                                 <div className="col-2">                                                                                                   
-                                    <LabelGroupie>                                    
+                                    <LabelGrouper>                                    
                                         <Spandex name="pax_compt1_index" id="pax_compt1_index">{c1index}</Spandex>
-                                    </LabelGroupie>
+                                    </LabelGrouper>
                                 </div>
                                 
                             </div>
@@ -257,7 +260,7 @@ export default class TrimForm extends Component {
                                     </LabelGrouper>
                                 </div>
 
-                                <div className="col-4">
+                                <div className="col-3">
                                     <LabelGrouper>
                                         <FormGroup>
                                             <Input type="text" name="compt2_nopax" id="compt2_nopax" placeholder="Max 12" onBlur={value.handlePax2} />
@@ -302,7 +305,7 @@ export default class TrimForm extends Component {
                                     </LabelGrouper>
                                 </div>
 
-                                <div className="col-4">
+                                <div className="col-3">
                                     <LabelGrouper>
                                         <FormGroup>
                                             <Input type="text" name="compt3_nopax" id="compt3_nopax" placeholder="Max 12" onBlur={value.handlePax3} />
@@ -349,7 +352,7 @@ export default class TrimForm extends Component {
                                     </LabelGrouper>
                                 </div>
 
-                                <div className="col-4">
+                                <div className="col-3">
                                     <LabelGrouper>
                                         <FormGroup>
                                             <Input type="text" name="compt4_nopax" id="compt4_nopax" placeholder="Max 12" onBlur={value.handlePax4} />
@@ -396,7 +399,7 @@ export default class TrimForm extends Component {
                                     </LabelGrouper>
                                 </div>
 
-                                <div className="col-4">
+                                <div className="col-3">
                                     <LabelGrouper>
                                         <FormGroup>
                                             <Input type="text" name="compt5_nopax" id="compt5_nopax" placeholder="Max 12" onBlur={value.handlePax5} />
@@ -442,7 +445,7 @@ export default class TrimForm extends Component {
                                     </LabelGrouper>
                                 </div>
 
-                                <div className="col-4">
+                                <div className="col-3">
                                     <LabelGrouper>
                                         <FormGroup>
                                             <Input type="text" name="compt6_nopax" id="compt6_nopax" placeholder="Max 12" onBlur={value.handlePax6} />
@@ -488,7 +491,7 @@ export default class TrimForm extends Component {
                                     </LabelGrouper>
                                 </div>
 
-                                <div className="col-4">
+                                <div className="col-3">
                                     <LabelGrouper>
                                         <FormGroup>
                                             <Input type="text" name="compt7_nopax" id="compt7_nopax" placeholder="Max 8" onBlur={value.handlePax7} />
@@ -533,7 +536,7 @@ export default class TrimForm extends Component {
                                     </LabelGrouper>
                                 </div>
 
-                                <div className="col-4">
+                                <div className="col-3">
                                     <LabelGrouper>
                                         <Spanner name="" id="" disabled >.</Spanner>
                                     </LabelGrouper>
@@ -575,7 +578,7 @@ export default class TrimForm extends Component {
                                     </LabelGrouper>
                                 </div>
 
-                                <div className="col-4">
+                                <div className="col-3">
                                     <LabelGrouper>
                                         <Spanner name="" id="" disabled >.</Spanner>
                                     </LabelGrouper>
@@ -618,22 +621,22 @@ export default class TrimForm extends Component {
                                     </LabelGrouper>
                                 </div>
 
-                                <div className="col-4">
+                                <div className="col-3">
                                     <LabelGrouper>
                                         <Spanner name="" id="" disabled >.</Spanner>
                                     </LabelGrouper>
                                 </div>
 
                                 <div className="col-2">
-                                    <SkiperGrouper>                                       
+                                    <LabelGrouper>                                       
                                         <Input type="text" name="bags_comptaft2_weight" id="bags_comptaft2_weight" placeholder="Max 454" onBlur={value.handleBaggAft2} />
-                                    </SkiperGrouper>
+                                    </LabelGrouper>
                                 </div>
 
                                 <div className="col-2">                                 
-                                    <SkipGrouper>
+                                    <LabelGrouper>
                                         <Spandex name="bags_comptaft2_index" id="bags_comptaft2_index">{ba2index}</Spandex>
-                                    </SkipGrouper>
+                                    </LabelGrouper>
                                 </div>
 
                             </div>
@@ -660,7 +663,7 @@ export default class TrimForm extends Component {
                                     </LabelGrouper>
                                 </div>
 
-                                <div className="col-4">
+                                <div className="col-3">
                                     <LabelGrouper>
                                         <Spanner name="" id="" disabled >.</Spanner>
                                     </LabelGrouper>
@@ -703,22 +706,19 @@ export default class TrimForm extends Component {
                                     </LabelGrouper>
                                 </div>
 
-                                <div className="col-4">
+                                <div className="col-3">
                                     <LabelGrouper>
                                         <Spanner name="" id="" disabled >.</Spanner>
                                     </LabelGrouper>
                                 </div>
 
                                 <div className="col-2">
-                                    <FormGrouper>
                                         <Input type="text" name="fob_weight" id="fob_weight" onBlur={value.handleFuel} />
-                                    </FormGrouper>
                                 </div> 
 
-                                <div className="col-2">                                 
-                                    <FormGrouper>
+                                <div className="col-2">
                                         <Spandex name="fob_index" id="fob_index">{findex}</Spandex>
-                                    </FormGrouper>
+                                    
                                 </div>                                  
 
                             </div>
@@ -746,24 +746,20 @@ export default class TrimForm extends Component {
                                     </LabelGrouper>
                                 </div>
 
-                                <div className="col-4">
+                                <div className="col-3">
                                     <LabelGrouper>
                                         <Spanner name="" id="" disabled >.</Spanner>
                                     </LabelGrouper>
                                 </div> 
 
                                 <div className="col-2">
-                                    <FormGrouper>
                                         <Spandex name="rw_weight" id="rw_weight">{rampWeight}</Spandex>
                                         <Alert>{rampMssge}</Alert>
-                                    </FormGrouper>
                                 </div> 
 
-                                <div className="col-2">                                 
-                                    <FormGrouper>
+                                <div className="col-2"> 
                                         <Spandex name="rw_index" id="rw_index">{rampIndex}</Spandex>
                                         <Alert></Alert>
-                                    </FormGrouper>
                                 </div>
 
                             </div>
@@ -790,22 +786,18 @@ export default class TrimForm extends Component {
                                     </LabelGrouper>
                                 </div>
 
-                                <div className="col-4">
+                                <div className="col-3">
                                     <LabelGrouper>
                                         <Spanner name="" id="" disabled >.</Spanner>
                                     </LabelGrouper>
                                 </div>
 
                                 <div className="col-2">
-                                    <FormGrouper>
-                                        <Input type="text" name="tf_weight" id="tf_weight" onBlur={value.handleTaxiFuel} />
-                                    </FormGrouper>
+                                    <Input type="text" name="tf_weight" id="tf_weight" onBlur={value.handleTaxiFuel} />
                                 </div> 
 
                                 <div className="col-2">
-                                    <FormGroupest>
-                                        <span name="tf_index" id="tf_index">{tfindex}</span>
-                                    </FormGroupest> 
+                                    <Spandex name="tf_index" id="tf_index">{tfindex}</Spandex>
                                 </div>
 
                             </div>
@@ -833,22 +825,19 @@ export default class TrimForm extends Component {
                                     </LabelGrouper>
                                 </div>
 
-                                <div className="col-4">
+                                <div className="col-3">
                                     <LabelGrouper>
                                         <Spanner name="" id="" disabled >.</Spanner>
                                     </LabelGrouper>
                                 </div>
 
                                 <div className="col-2">
-                                    <FormGrouper>
-                                        <span name="tw_weight" id="tw_weight"><h5>{toffWeight} KG</h5></span>
-                                    </FormGrouper>
+                                    <Spandex name="tw_weight" id="tw_weight"> {toffWeight} </Spandex>
+                                    <Alert>{tWMssge}</Alert>
                                 </div>
 
-                                <div className="col-2">                                 
-                                    <FormGrouper>
-                                        <span name="tw_index" id="tw_index">{twIndex}</span>
-                                    </FormGrouper>
+                                <div className="col-2"> 
+                                        <Spandex name="tw_index" id="tw_index">{twIndex}</Spandex>
                                 </div>
 
                             </div>
@@ -876,22 +865,19 @@ export default class TrimForm extends Component {
                                     </LabelGrouper>
                                 </div>
 
-                                <div className="col-4">
+                                <div className="col-3">
                                     <LabelGrouper>
                                         <Spanner name="" id="" disabled >.</Spanner>
                                     </LabelGrouper>
                                 </div>
 
                                 <div className="col-2">
-                                    <FormGrouper>
-                                        <Input type="text" name="estfuelused_weight" id="estfuelused_weight" onBlur={value.handleFused} />
-                                    </FormGrouper>
+                                    <Input type="text" name="estfuelused_weight" id="estfuelused_weight" onBlur={value.handleFused} />
+                                 
                                 </div>  
 
-                                <div className="col-2">                                 
-                                    <FormGrouper>
-                                        <span name="estfuelused_index" id="estfuelused_index"></span>
-                                    </FormGrouper>
+                                <div className="col-2">
+                                        <Spandex name="estfuelused_index" id="estfuelused_index">{fusedIndex}</Spandex>
                                 </div>
 
                             </div>
@@ -920,7 +906,7 @@ export default class TrimForm extends Component {
                                     </LabelGrouper>
                                 </div>
                                 
-                                <div className="col-4">
+                                <div className="col-3">
                                     <LabelGrouper>
                                         <Spanner name="" id="" disabled >.</Spanner>
                                     </LabelGrouper>
@@ -928,15 +914,14 @@ export default class TrimForm extends Component {
 
                                 <div className="col-2">
                                     <LabelGrouper>
-                                        <FormGrouper>
-                                            <span name="lw_weight" id="lw_weight"><h5>{lweight} KG</h5></span>
-                                        </FormGrouper>
+                                        <Spandex name="lw_weight" id="lw_weight"> {lweight} </Spandex>
+                                        <Alert>{lmssge}</Alert>
                                     </LabelGrouper> 
                                 </div>  
 
                                 <div className="col-2">                                 
                                     <FormGroup>
-                                        <span name="lw_index" id="lw_index">{lindex}</span>
+                                        <Spandex name="lw_index" id="lw_index">{lindex}</Spandex>
                                     </FormGroup>
                                 </div>                              
 
@@ -962,7 +947,7 @@ export default class TrimForm extends Component {
                                     </LabelGrouper>
                                 </div>
                                 
-                                <div className="col-4">
+                                <div className="col-3">
                                     <LabelGrouper>
                                         <FormGroup>
                                             Total Pax : {totPax}
@@ -980,17 +965,29 @@ export default class TrimForm extends Component {
                                 </div>                                                          
                                 
                                 <div className="col-2">                                 
-                                    <LabelGrouper>
-                                        <Spandex name="totindex" id="totindex">{totIndex}</Spandex>
-                                    </LabelGrouper>
+                                    <FormGroup>
+                                       Total:{totIndex}
+                                    </FormGroup>
                                 </div>
                             </div>            
 
                     </FormContainer>
 
 
-                    <DiagramContainer className="col-4">
-                        <img alt="plane-chart" src={schematics} />
+                    <DiagramContainer className="col-5">
+                        
+                        <ControlsContainer>
+
+                        </ControlsContainer>
+
+                        <ImageContainer className="row">
+                            <img alt="plane-chart" src={schematics} />
+                        </ImageContainer>
+
+                        <GraphContainer>
+                            <Graph chartData={data} chartOptions={options} />
+                        </GraphContainer>
+                        
                     </DiagramContainer>
                 </div>  
             </Form>
@@ -1019,14 +1016,10 @@ const Form = styled.div`
 
 `
 
-const Gap = styled.div`
-    
 
-`
-
-
-const Officiator = styled.div`
-    
+const ControlsContainer = styled.div`
+    margin-top:3rem;
+    margin-bottom:3rem;
 
 `
 
@@ -1036,6 +1029,20 @@ const FormContainer = styled.div`
 
 
 `
+
+const ImageContainer = styled.div`
+    margin-top:3rem;
+    margin-bottom:5rem;
+
+`
+
+
+const GraphContainer = styled.div`
+    margin-top:;
+    margin-bottom:;
+
+`
+
 
 const Alert = styled.span`
     margin-top:3px;
@@ -1051,12 +1058,6 @@ const DiagramContainer = styled.div`
 
 `
 
-const NeutralGrouper = styled.div`
-    margin-top:2.5rem;
-
-`
-
-
 const LabelGrouper = styled.div`
     height:3rem;
     margin-top:1rem;
@@ -1069,35 +1070,9 @@ const FormGroup = styled.div`
 
 `
 
-const FormGroupest = styled.div`
-    margin-top:3rem;
-
-`
-
-const Groupest = styled.div`
-    margin-top:2.9rem;
-
-`
-
-const LabelGroupie = styled.div`
-    margin-top:1.5rem;
-    margin-bottom:2.2rem;
-
-`
-
 const FormGrouper = styled.div`
     margin-top:2rem;
     margin-bottom:1rem;
-
-`
-
-const SkipGrouper = styled.div`
-    margin-top:3rem;
-
-`
-
-const SkiperGrouper = styled.div`
-    margin-top:1rem;
 
 `
 
@@ -1120,18 +1095,9 @@ const Spanner = styled.span`
 
 `
 
-const Spanners = styled.span`
-    margin-top:3rem;
-
-`
-
 const Spandex = styled.div`
     width:5rem;
     font-weight:bold;
     font-family:Montserrat;
     padding-left:1.5rem;
-`
-
-const Trim = styled.div`
-    
 `

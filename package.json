@@ -1,7 +1,7 @@
 {
-  "name": "weight_and_balance_calculator",
+  "name": "pasion_cargo_trimsheet",
   "version": "1.0.0",
-  "description": "A trim sheet/ take-off calculator for passion airlines, it automated the take-off weight and balance calculations",
+  "description": "A trim sheet/ take-off calculator for passion cargo planes, it automated the take-off weight and balance calculations",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
