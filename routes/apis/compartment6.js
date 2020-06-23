@@ -3,22 +3,22 @@ const router = express.Router();
 const Passenger = require('../../models/PassengerData');
 const Pax6 = require('../../models/PaxCompt6');
 
- 
+  
 //@route GET api/pax6
 //@desc Gets all passenger compartment 6 data
 //@access Private*
 router.post('/', (req, res) => {
-    const numberofpax = req.body.pax;
-    if( numberofpax !== '' && numberofpax <= 12 && numberofpax !== 0){
+    const weight = req.body.weight;
+    if( weight !=='' && weight <= 1008 && weight !== 0 && weight == 84 && weight == 168 && weight == 252 && weight == 336 && weight == 420 && weight == 504 && weight == 588 && weight == 672 && weight == 756 && weight == 840 && weight == 924 && weight == 1008 ){
     //retrieving passenger-data from the database using the compt_nopax sent from from front-end.
         Pax6.findOne({
-            where: { numberofpax },                       
+            where: { weight },                       
         })                      
         .then((pax6Data)=>{
             console.log(pax6Data);
             const cargoWeight = pax6Data.weight;
             const cargoId = cargoWeight * 0.015;
-            const cargoIndex = cargoId.toFixed(1);
+            const cargoIndex = cargoId.toFixed(3);
             res.status(200).json({
                     pax : pax6Data.numberofpax,
                     weight : pax6Data.weight,
@@ -27,13 +27,22 @@ router.post('/', (req, res) => {
         })
 
 
+    }else if ( weight !== '' && weight <= 1008 && weight !== 0 && weight !== 84 && weight !== 168 && weight !== 252 && weight !== 336 && weight !== 420 && weight !== 504 && weight !== 588 && weight !== 672 && weight !== 756 && weight !== 840 && weight !== 924 && weight !== 1008 ){
+        const cargoId = weight * 0.015;
+        const cargoIndex = cargoId.toFixed(3); 
+        res.status(200).json({
+            weight,
+            index : cargoIndex,
+            message: 'Ok'               
+        }) 
+
 
     //handling inputs that are empty strings
-    }else if ( numberofpax === '' ){
+    }else if ( weight === '' ){
         res.status(200).json({
             index: 0,
             weight: 0,
-            message: 'No passengers assigned'
+            message: 'No Cargo Weight Assigned'
         })
 
 
@@ -44,7 +53,7 @@ router.post('/', (req, res) => {
             res.status(200).json({
                 index: 0,
                 weight: 0,
-                message : 'Your input for this field falls outside the valid range'
+                message : 'Exceeds Max Weight Limit'
             })
         )
     }

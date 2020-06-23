@@ -53,7 +53,7 @@ export default class TrimForm extends Component {
                             </div>
 
                             <Labeller className="col-3">                                
-                                <h6>NO. PAX</h6>
+                                <h6>CARGO WEIGHT</h6>
                             </Labeller> 
 
                             <div className="col-2">
@@ -201,7 +201,7 @@ export default class TrimForm extends Component {
                                 <div className="col-3">
                                     <LabelGrouper>
                                         <FormText color="muted">
-                                            PAX COMPT
+                                            COMPARTMENT
                                         </FormText>
                                     </LabelGrouper>
                                 </div>
@@ -217,7 +217,7 @@ export default class TrimForm extends Component {
                                 <div className="col-3">                                    
                                     <LabelGrouper>
                                         <FormGroup>
-                                            <Input type="text" name="compt1_nopax" id="compt1_nopax" placeholder="Max 10" onBlur={value.handlePax1} />
+                                            <Input type="text" name="compt1_nopax" id="compt1_nopax" placeholder="Max 840" onBlur={value.handlePax1} />
                                             <Alert>{c1errMssge}</Alert>
                                         </FormGroup>
                                     </LabelGrouper>
@@ -247,7 +247,7 @@ export default class TrimForm extends Component {
                                 <div className="col-3">
                                     <LabelGrouper>
                                         <FormText color="muted">
-                                            PAX COMPT
+                                            COMPARTMENT 
                                         </FormText>
                                     </LabelGrouper>        
                                 </div>
@@ -263,7 +263,7 @@ export default class TrimForm extends Component {
                                 <div className="col-3">
                                     <LabelGrouper>
                                         <FormGroup>
-                                            <Input type="text" name="compt2_nopax" id="compt2_nopax" placeholder="Max 12" onBlur={value.handlePax2} />
+                                            <Input type="text" name="compt2_nopax" id="compt2_nopax" placeholder="Max 1008" onBlur={value.handlePax2} />
                                             <Alert>{c2errMssge}</Alert>
                                         </FormGroup>
                                     </LabelGrouper>
@@ -292,7 +292,7 @@ export default class TrimForm extends Component {
                                 <div className="col-3">
                                     <LabelGrouper>
                                         <FormText color="muted">
-                                            PAX COMPT
+                                            COMPARTMENT
                                         </FormText>
                                     </LabelGrouper>
                                 </div>
@@ -308,7 +308,7 @@ export default class TrimForm extends Component {
                                 <div className="col-3">
                                     <LabelGrouper>
                                         <FormGroup>
-                                            <Input type="text" name="compt3_nopax" id="compt3_nopax" placeholder="Max 12" onBlur={value.handlePax3} />
+                                            <Input type="text" name="compt3_nopax" id="compt3_nopax" placeholder="Max 1008" onBlur={value.handlePax3} />
                                             <Alert>{c3errMssge}</Alert>
                                         </FormGroup>
                                     </LabelGrouper>
@@ -339,7 +339,7 @@ export default class TrimForm extends Component {
                                 <div className="col-3">
                                     <LabelGrouper>
                                         <FormText color="muted">
-                                            PAX COMPT
+                                            COMPARTMENT
                                         </FormText>
                                     </LabelGrouper>
                                 </div>
@@ -355,7 +355,7 @@ export default class TrimForm extends Component {
                                 <div className="col-3">
                                     <LabelGrouper>
                                         <FormGroup>
-                                            <Input type="text" name="compt4_nopax" id="compt4_nopax" placeholder="Max 12" onBlur={value.handlePax4} />
+                                            <Input type="text" name="compt4_nopax" id="compt4_nopax" placeholder="Max 1008" onBlur={value.handlePax4} />
                                             <Alert>{c4errMssge}</Alert>
                                         </FormGroup>
                                     </LabelGrouper>
@@ -386,7 +386,7 @@ export default class TrimForm extends Component {
                                 <div className="col-3">
                                     <LabelGrouper>
                                         <FormText color="muted">
-                                            PAX COMPT
+                                            COMPARTMENT
                                         </FormText>
                                     </LabelGrouper>
                                 </div>
@@ -402,7 +402,7 @@ export default class TrimForm extends Component {
                                 <div className="col-3">
                                     <LabelGrouper>
                                         <FormGroup>
-                                            <Input type="text" name="compt5_nopax" id="compt5_nopax" placeholder="Max 12" onBlur={value.handlePax5} />
+                                            <Input type="text" name="compt5_nopax" id="compt5_nopax" placeholder="Max 1008" onBlur={value.handlePax5} />
                                             <Alert>{c5errMssge}</Alert>
                                         </FormGroup>
                                     </LabelGrouper>
@@ -432,7 +432,7 @@ export default class TrimForm extends Component {
                                 <div className="col-3">
                                     <LabelGrouper>
                                         <FormText color="muted">
-                                            PAX COMPT
+                                            COMPARTMENT
                                         </FormText>
                                     </LabelGrouper>
                                 </div>
@@ -448,7 +448,7 @@ export default class TrimForm extends Component {
                                 <div className="col-3">
                                     <LabelGrouper>
                                         <FormGroup>
-                                            <Input type="text" name="compt6_nopax" id="compt6_nopax" placeholder="Max 12" onBlur={value.handlePax6} />
+                                            <Input type="text" name="compt6_nopax" id="compt6_nopax" placeholder="Max 1008" onBlur={value.handlePax6} />
                                             <Alert>{c6errMssge}</Alert>
                                         </FormGroup>
                                     </LabelGrouper>
@@ -478,7 +478,7 @@ export default class TrimForm extends Component {
                                 <div className="col-3">
                                     <LabelGrouper>
                                         <FormText color="muted">
-                                            PAX COMPT
+                                            COMPARTMENT
                                         </FormText>
                                     </LabelGrouper>
                                 </div>
@@ -494,7 +494,7 @@ export default class TrimForm extends Component {
                                 <div className="col-3">
                                     <LabelGrouper>
                                         <FormGroup>
-                                            <Input type="text" name="compt7_nopax" id="compt7_nopax" placeholder="Max 8" onBlur={value.handlePax7} />
+                                            <Input type="text" name="compt7_nopax" id="compt7_nopax" placeholder="Max 672" onBlur={value.handlePax7} />
                                             <Alert>{c7errMssge}</Alert>
                                         </FormGroup>
                                     </LabelGrouper>

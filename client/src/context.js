@@ -795,12 +795,12 @@ class DataProvider extends Component {
 
 
 
-
+//In this case this handles the weight of cargo for the first compartment
     handlePax1 = (e) =>{
         this.onChange(e);
-        const pax = localStorage.getItem('compt1_nopax');
-        axios.post('/api/pax1', {
-            pax
+        const weight = localStorage.getItem('compt1_nopax');
+        axios.post('/api/compartment1', {
+            weight
         }).then((pax1Data) => { 
             const pax1 = pax1Data.data
             const status = pax1Data.status;
@@ -856,13 +856,13 @@ class DataProvider extends Component {
 
 
 
-
+//In this case this handles the weight of cargo for the second compartment
     handlePax2 = (e) =>{
         this.onChange(e);
-        const pax = localStorage.getItem('compt2_nopax');
-        console.log(pax);
-        axios.post('/api/pax2', {
-            pax
+        const weight = localStorage.getItem('compt2_nopax');
+        console.log(weight);
+        axios.post('/api/compartment2', {
+            weight
         }).then((pax2Data) => {
             const pax2 = pax2Data.data;
             const status = pax2Data.status;       
@@ -916,13 +916,13 @@ class DataProvider extends Component {
 
 
 
-
+//In this case this handles the weight of cargo for the third compartment
     handlePax3 = (e) =>{
         this.onChange(e);
-        const pax = localStorage.getItem('compt3_nopax');
-        console.log(pax);
-        axios.post('/api/pax3', {
-            pax
+        const weight = localStorage.getItem('compt3_nopax');
+        console.log(weight);
+        axios.post('/api/compartment3', {
+            weight
         }).then((pax3Data) => {
             const pax3 = pax3Data.data;
             const status = pax3Data.status;
@@ -980,13 +980,13 @@ class DataProvider extends Component {
 
 
 
-
+//In this case this handles the weight of cargo for the fourth compartment
     handlePax4 = (e) =>{
         this.onChange(e);
-        const pax = localStorage.getItem('compt4_nopax');
-        console.log(pax);
-        axios.post('/api/pax4', {
-            pax
+        const weight = localStorage.getItem('compt4_nopax');
+        console.log(weight);
+        axios.post('/api/compartment4', {
+            weight
         }).then((pax4Data) => {
             const pax4 = pax4Data.data;
             const status = pax4Data.status;
@@ -1042,12 +1042,13 @@ class DataProvider extends Component {
 
 
 
+    //In this case this handles the weight of cargo for the fifth compartment
     handlePax5 = (e) =>{
         this.onChange(e);
-        const pax = localStorage.getItem('compt5_nopax');
-        console.log(pax)
-        axios.post('/api/pax5', {
-            pax
+        const weight = localStorage.getItem('compt5_nopax');
+        console.log(weight)
+        axios.post('/api/compartment5', {
+            weight
         }).then((pax5Data) => {
             const pax5 = pax5Data.data;
             const status = pax5Data.status;
@@ -1103,13 +1104,13 @@ class DataProvider extends Component {
 
 
 
-
+//In this case this handles the weight of cargo for the sixth compartment
     handlePax6 = (e) =>{
         this.onChange(e);
-        const pax = localStorage.getItem('compt6_nopax');
-        console.log(pax)
-        axios.post('/api/pax6', {
-            pax
+        const weight = localStorage.getItem('compt6_nopax');
+        console.log(weight)
+        axios.post('/api/compartment6', {
+            weight
         }).then((pax6Data) => {
             const pax6 = pax6Data.data;
             const status = pax6Data.status;
@@ -1166,12 +1167,14 @@ class DataProvider extends Component {
 
 
 
+
+//In this case this handles the weight of cargo for the seventh compartment
     handlePax7 = (e) =>{
         this.onChange(e);
-        const pax = localStorage.getItem('compt7_nopax');
-        console.log(pax);
-        axios.post('/api/pax7', {
-            pax
+        const weight = localStorage.getItem('compt7_nopax');
+        console.log(weight);
+        axios.post('/api/compartment7', {
+            weight
         }).then((pax7Data) => {
             const pax7 = pax7Data.data;
             const status = pax7Data.status;

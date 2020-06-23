@@ -5,13 +5,13 @@ const app = express();
 
 const db = require('./config/db.js');
 
-const pax1 = require('./routes/apis/pax1');
-const pax2 = require('./routes/apis/pax2');
-const pax3 = require('./routes/apis/pax3');
-const pax4 = require('./routes/apis/pax4');
-const pax5 = require('./routes/apis/pax5');
-const pax6 = require('./routes/apis/pax6');
-const pax7 = require('./routes/apis/pax7');
+const compartment1 = require('./routes/apis/compartment1');
+const compartment2 = require('./routes/apis/compartment2');
+const compartment3 = require('./routes/apis/compartment3');
+const compartment4 = require('./routes/apis/compartment4');
+const compartment5 = require('./routes/apis/compartment5');
+const compartment6 = require('./routes/apis/compartment6');
+const compartment7 = require('./routes/apis/compartment7');
 const user = require('./routes/apis/user');
 const fuel = require('./routes/apis/fuel');
 const baggaft1 = require('./routes/apis/bagaft1');
@@ -29,13 +29,13 @@ db.authenticate()
 .catch(err => console.log(`Error :+ ${err}`))
 
 
-app.use('/api/pax1', pax1);
-app.use('/api/pax2', pax2);
-app.use('/api/pax3', pax3);
-app.use('/api/pax4', pax4);
-app.use('/api/pax5', pax5);
-app.use('/api/pax6', pax6);
-app.use('/api/pax7', pax7);
+app.use('/api/compartment1', compartment1);
+app.use('/api/compartment2', compartment2);
+app.use('/api/compartment3', compartment3);
+app.use('/api/compartment4', compartment4);
+app.use('/api/compartment5', compartment5);
+app.use('/api/compartment6', compartment6);
+app.use('/api/compartment7', compartment7);
 app.use('/api/bagfwd', baggfwd);
 app.use('/api/bagaft1', baggaft1);
 app.use('/api/bagaft2', baggaft2);
