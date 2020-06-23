@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Passenger = require('../../models/PassengerData');
 const Pax5 = require('../../models/PaxCompt5');
-
+  
 
 //@route GET api/pax5
 //@desc Gets all passenger compartment 5 data
@@ -16,10 +16,13 @@ router.post('/', (req, res) => {
         })                     
         .then((pax5Data)=>{
             console.log(pax5Data);
+            const cargoWeight = pax5Data.weight;
+            const cargoId = cargoWeight * 0.006;
+            const cargoIndex = cargoId.toFixed(1);
             res.status(200).json({
                     pax : pax5Data.numberofpax,
                     weight : pax5Data.weight,
-                    index : pax5Data.pax_index                
+                    index : cargoIndex                
             })                  
         }) 
 

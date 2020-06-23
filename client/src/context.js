@@ -332,7 +332,16 @@ class DataProvider extends Component {
                                 {
                                     x:  113,
                                     y: 16000
+                                },
+                                {
+                                    x: pointX1, 
+                                    y: pointY1 
+                                },
+                                {
+                                    x: pointX2,
+                                    y: pointY2
                                 }
+
                             ],
                             fill: true,                                                        
                             type: 'line',
@@ -1429,7 +1438,7 @@ class DataProvider extends Component {
             const findex = parseFloat(fuelIndex);
             const rampWeight = fweight + initWeight;
             const rampIndex = findex + initIndex;
-            const rIndex = rampIndex.toFixed(1);
+            const rIndex = rampIndex.toPrecision(1);
             console.log(`this is the ramp weight ${rampWeight}`);
             console.log(`this is the ramp index ${rampIndex}`);
             if( rampWeight > 29347 ){

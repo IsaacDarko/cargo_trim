@@ -3,7 +3,7 @@ const router = express.Router();
 const Passenger = require('../../models/PassengerData');
 const Pax1 = require('../../models/PaxCompt1');
 
- 
+  
 //@route POST api/pax1
 //@desc Returns specific data for a particular compartment passed on the 
 //@access Private* 
@@ -17,10 +17,13 @@ router.post('/', (req, res) => {
         })                     
         .then((pax1Data)=>{
             console.log(pax1Data);
+            const cargoWeight = pax1Data.weight;
+            const cargoId = cargoWeight * -0.029;
+            const cargoIndex = cargoId.toFixed(1);
             res.status(200).json({
                     pax : pax1Data.numberofpax,
                     weight : pax1Data.weight,
-                    index : pax1Data.pax_index                
+                    index : cargoIndex                
             })                  
         })
 

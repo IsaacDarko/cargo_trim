@@ -8,7 +8,7 @@ import {
     Input
 } from 'reactstrap';
 import styled from 'styled-components';
-import background from '../thirdchoice.jpg'
+import background from '../frontbg.jpg'
 
 export default class Home extends Component {
     render() {
@@ -17,7 +17,7 @@ export default class Home extends Component {
                 <div className="row">
                     <AuthContainer className="col-3">
                         <Hot3>
-                            Weight & Balance
+                            Trim Sheet
                         </Hot3>
                         
                         <Login>

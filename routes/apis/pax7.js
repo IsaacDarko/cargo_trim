@@ -16,10 +16,13 @@ router.post('/', (req, res) => {
         })                     
         .then((pax7Data)=>{
             console.log(pax7Data);
+            const cargoWeight = pax7Data.weight;
+            const cargoId = cargoWeight * 0.022;
+            const cargoIndex = cargoId.toFixed(1);
             res.status(200).json({
                     pax : pax7Data.numberofpax,
                     weight : pax7Data.weight,
-                    index : pax7Data.pax_index                
+                    index : cargoIndex                
             })                  
         })
 
