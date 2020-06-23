@@ -343,13 +343,11 @@ class DataProvider extends Component {
                                 }
 
                             ],
-                            fill: true,                                                        
+                            fill: false,                                                        
                             type: 'line',
-                            lineTension: 0.1,
-                            fillColor: "rgba(151,187,205,0.2)",
-                            strokeColor: "rgba(151,187,205,1)",
-                            pointColor: "rgba(151,187,205,1)",
-                            pointStrokeColor: "#fff"                         
+                            lineTension: 0,
+                            strokeColor: "rgba(151,187,205,0)",
+                            pointColor: "rgba(0,0,0,1)"                        
                         },
                         {
                             label: 'WEIGHT',
@@ -365,10 +363,8 @@ class DataProvider extends Component {
                              ],
                             fill: true,
                             lineTension: 0.1,
-                            fillColor: "rgba(151,187,205,0.2)",
-                            strokeColor: "rgba(151,187,205,1)",
-                            pointColor: "rgba(151,187,205,1)",
-                            pointStrokeColor: "#fff"                            
+                            fillColor: "rgba(151,187,205,0)",
+                            pointColor: "rgba(0,0,0,1)"                      
                         },                       
                         {                            
                             label: 'INDEX',
@@ -377,10 +373,8 @@ class DataProvider extends Component {
                             ],
                             fill: true,
                             lineTension: 0.1,
-                            fillColor: "rgba(151,187,205,0.2)",
-                            strokeColor: "rgba(151,187,205,1)",
-                            pointColor: "rgba(151,187,205,1)",
-                            pointStrokeColor: "#fff"                         
+                            fillColor: "rgba(151,187,205,0)",
+                            pointColor: "rgba(0,0,0,1)"                     
                         }                        
                     ]
     
@@ -1437,10 +1431,10 @@ class DataProvider extends Component {
             const fweight = parseFloat(fuelOB);
             const findex = parseFloat(fuelIndex);
             const rampWeight = fweight + initWeight;
-            const rampIndex = findex + initIndex;
-            const rIndex = rampIndex.toPrecision(1);
+            const rampIndex = parseFloat(findex.toFixed(2)) + parseFloat(initIndex.toFixed(2));
+            const rIndex = parseInt(rampIndex)
             console.log(`this is the ramp weight ${rampWeight}`);
-            console.log(`this is the ramp index ${rampIndex}`);
+            console.log(`this is the ramp index ${rIndex}`);
             if( rampWeight > 29347 ){
                 this.setState(()=>{
                     return{ rampData:{
@@ -1454,7 +1448,7 @@ class DataProvider extends Component {
                 this.setState(()=>{
                     return{ rampData:{
                         'weight' : rampWeight,
-                        'index' : rampIndex,
+                        'index' : rIndex,
                         'succMssge' : 'Everything seems good',
                         'errMssge': ""
                     }}
@@ -1462,7 +1456,7 @@ class DataProvider extends Component {
 
                 const filledIndex = this.state.filledSheetData.findIndex(element => element.field === "ramp" );
                 let graphArray = [...this.state.filledSheetData];
-                graphArray[filledIndex] = {...graphArray[filledIndex], 'weight': rampWeight, 'index': rampIndex}
+                graphArray[filledIndex] = {...graphArray[filledIndex], 'weight': rampWeight, 'index': rIndex}
                 this.setState({
                     filledSheetData: graphArray,
                     });
