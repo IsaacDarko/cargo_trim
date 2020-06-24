@@ -383,7 +383,7 @@ class DataProvider extends Component {
                 options: {
                     title: {
                         display: true,
-                        text:'Aircraft Center Gravity Graph',
+                        text:'Aircraft Center Of Gravity Graph',
                         fontSize: 27
                     },
 

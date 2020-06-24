@@ -947,10 +947,10 @@ export default class TrimForm extends Component {
                                     </LabelGrouper>
                                 </div>
                                 
-                                <div className="col-3">
+                               <div className="col-3">
                                     <LabelGrouper>
                                         <FormGroup>
-                                            Total Pax : {totPax}
+                                             {totPax}
                                             <Alert>{totPaxMssge}</Alert>
                                         </FormGroup>
                                     </LabelGrouper>
@@ -966,7 +966,7 @@ export default class TrimForm extends Component {
                                 
                                 <div className="col-2">                                 
                                     <FormGroup>
-                                       Total:{totIndex}
+                                       Index:{totIndex}
                                     </FormGroup>
                                 </div>
                             </div>            
