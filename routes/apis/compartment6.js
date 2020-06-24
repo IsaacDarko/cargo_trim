@@ -9,19 +9,19 @@ const Pax6 = require('../../models/PaxCompt6');
 //@access Private*
 router.post('/', (req, res) => {
     const weight = req.body.weight;
-    if( weight !=='' && weight <= 1008 && weight !== 0 && weight == 84 && weight == 168 && weight == 252 && weight == 336 && weight == 420 && weight == 504 && weight == 588 && weight == 672 && weight == 756 && weight == 840 && weight == 924 && weight == 1008 ){
+    if( weight !=='' && weight <= 1008 && weight !== 0 && weight === 84 && weight === 168 && weight === 252 && weight === 336 && weight === 420 && weight === 504 && weight === 588 && weight === 672 && weight === 756 && weight === 840 && weight === 924 && weight === 1008 ){
     //retrieving passenger-data from the database using the compt_nopax sent from from front-end.
         Pax6.findOne({
             where: { weight },                       
         })                      
         .then((pax6Data)=>{
             console.log(pax6Data);
-            const cargoWeight = pax6Data.weight;
+            const cargoWeight = parseInt(pax6Data.weight);
             const cargoId = cargoWeight * 0.015;
             const cargoIndex = cargoId.toFixed(3);
             res.status(200).json({
                     pax : pax6Data.numberofpax,
-                    weight : pax6Data.weight,
+                    weight : cargoWeight,
                     index : cargoIndex                
             })                  
         })

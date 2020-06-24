@@ -17,12 +17,12 @@ router.post('/', (req, res) => {
         })                     
         .then((pax3Data)=>{
             console.log(pax3Data);
-            const cargoWeight = pax3Data.weight;
+            const cargoWeight = parseInt(pax3Data.weight);
             const cargoId = cargoWeight * -0.012;
             const cargoIndex = cargoId.toFixed(3);
             res.status(200).json({
                     pax : pax3Data.numberofpax,
-                    weight : pax3Data.weight,
+                    weight : cargoWeight,
                     index : cargoIndex,
                     message: 'Ok'               
             })                  

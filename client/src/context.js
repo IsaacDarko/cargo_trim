@@ -813,7 +813,9 @@ class DataProvider extends Component {
                     }
                 })
                 const { pax, index, weight, message } = pax1;
-                console.log(pax)
+                console.log(pax);
+                const rWeight = parseInt(weight);
+                const rIndex = parseFloat(index);
                 const paxIndex = this.state.totalPax.findIndex(element => element.field === "compt1_nopax" );
                 const freshArray = [...this.state.totalPax];
                 freshArray[paxIndex] = {...freshArray[paxIndex], numPax:pax}
@@ -824,7 +826,7 @@ class DataProvider extends Component {
 
                 const zfwIndex = this.state.zfData.findIndex(element => element.field === "compt1_nopax" );
                 let newArray = [...this.state.zfData];
-                newArray[zfwIndex] = {...newArray[zfwIndex], weight, errMssge:message}
+                newArray[zfwIndex] = {...newArray[zfwIndex], weight:rWeight, errMssge:message}
                 this.setState({
                     zfData: newArray,
                     });
@@ -832,7 +834,7 @@ class DataProvider extends Component {
 
                 const zfiIndex = this.state.zfData.findIndex(element => element.field === "compt1_nopax" );
                 let finalArray = [...this.state.zfData];
-                finalArray[zfiIndex] = {...finalArray[zfiIndex], index}
+                finalArray[zfiIndex] = {...finalArray[zfiIndex], index:rIndex}
                 this.setState({
                     zfData: finalArray,
                     });
@@ -840,7 +842,7 @@ class DataProvider extends Component {
 
                 const filledIndex = this.state.filledSheetData.findIndex(element => element.field === "compt1_nopax" );
                 let graphArray = [...this.state.filledSheetData];
-                graphArray[filledIndex] = {...graphArray[filledIndex], weight, index}
+                graphArray[filledIndex] = {...graphArray[filledIndex], weight:rWeight, index:rIndex}
                 this.setState({
                     filledSheetData: graphArray,
                     });
@@ -872,7 +874,9 @@ class DataProvider extends Component {
                     return { pax2Data : pax2 }
                 })
                 const { index, weight, message, pax } = pax2;
-                console.log(pax)
+                console.log(pax);
+                const rWeight = parseInt(weight);
+                const rIndex = parseFloat(index);
                 const paxIndex = this.state.totalPax.findIndex(element => element.field === "compt2_nopax" );
                 const freshArray = [...this.state.totalPax];
                 freshArray[paxIndex] = {...freshArray[paxIndex], numPax:pax}
@@ -883,7 +887,7 @@ class DataProvider extends Component {
 
                 const zfIndex = this.state.zfData.findIndex(element => element.field === "compt2_nopax" );
                 let newArray = [...this.state.zfData];
-                newArray[zfIndex] = {...newArray[zfIndex], weight, errMssge:message}
+                newArray[zfIndex] = {...newArray[zfIndex], weight:rWeight, errMssge:message}
                 this.setState({
                     zfData: newArray,
                     });
@@ -891,7 +895,7 @@ class DataProvider extends Component {
 
                 const zfiIndex = this.state.zfData.findIndex(element => element.field === "compt2_nopax" );
                 let finalArray = [...this.state.zfData];
-                finalArray[zfiIndex] = {...finalArray[zfiIndex], index}
+                finalArray[zfiIndex] = {...finalArray[zfiIndex], index:rIndex}
                 this.setState({
                     zfData: finalArray,
                     });
@@ -899,7 +903,7 @@ class DataProvider extends Component {
 
                 const filledIndex = this.state.filledSheetData.findIndex(element => element.field === "compt2_nopax" );
                 let graphArray = [...this.state.filledSheetData];
-                graphArray[filledIndex] = {...graphArray[filledIndex], weight, index}
+                graphArray[filledIndex] = {...graphArray[filledIndex], weight:rWeight, index:rIndex}
                 this.setState({
                     filledSheetData: graphArray,
                     });
@@ -932,7 +936,9 @@ class DataProvider extends Component {
                     return { pax3Data : pax3 }
                 })
                 const { index, weight, message, pax } = pax3;
-                console.log(pax)
+                console.log(pax);
+                const rWeight = parseInt(weight);
+                const rIndex = parseFloat(index);
                 const paxIndex = this.state.totalPax.findIndex(element => element.field === "compt3_nopax" );
                 const freshArray = [...this.state.totalPax];
                 freshArray[paxIndex] = {...freshArray[paxIndex], numPax:pax}
@@ -943,7 +949,7 @@ class DataProvider extends Component {
 
                 const zfIndex = this.state.zfData.findIndex(element => element.field === "compt3_nopax" );
                 let newArray = [...this.state.zfData];
-                newArray[zfIndex] = {...newArray[zfIndex], weight, errMssge:message}
+                newArray[zfIndex] = {...newArray[zfIndex], weight:rWeight, errMssge:message}
                 this.setState({
                     zfData: newArray,
                     });
@@ -951,7 +957,7 @@ class DataProvider extends Component {
 
                 const zfiIndex = this.state.zfData.findIndex(element => element.field === "compt3_nopax" );
                 let finalArray = [...this.state.zfData];
-                finalArray[zfiIndex] = {...finalArray[zfiIndex], index}
+                finalArray[zfiIndex] = {...finalArray[zfiIndex], index:rIndex}
                 this.setState({
                     zfData: finalArray,
                     });
@@ -959,7 +965,7 @@ class DataProvider extends Component {
 
                 const filledIndex = this.state.filledSheetData.findIndex(element => element.field === "compt3_nopax" );
                 let graphArray = [...this.state.filledSheetData];
-                graphArray[filledIndex] = {...graphArray[filledIndex], weight, index}
+                graphArray[filledIndex] = {...graphArray[filledIndex], weight:rWeight, index:rIndex}
                 this.setState({
                     filledSheetData: graphArray,
                     });
@@ -996,7 +1002,9 @@ class DataProvider extends Component {
                     return { pax4Data : pax4 }
                 })
                 const { index, weight, message, pax } = pax4;
-                console.log(pax)
+                console.log(pax);
+                const rWeight = parseInt(weight);
+                const rIndex = parseFloat(index);
                 const paxIndex = this.state.totalPax.findIndex(element => element.field === "compt4_nopax" );
                 const freshArray = [...this.state.totalPax];
                 freshArray[paxIndex] = {...freshArray[paxIndex], numPax:pax}
@@ -1007,7 +1015,7 @@ class DataProvider extends Component {
 
                 const zfIndex = this.state.zfData.findIndex(element => element.field === "compt4_nopax" );
                 let newArray = [...this.state.zfData];
-                newArray[zfIndex] = {...newArray[zfIndex], weight, errMssge:message}
+                newArray[zfIndex] = {...newArray[zfIndex], weight:rWeight, errMssge:message}
                 this.setState({
                     zfData: newArray,
                     });
@@ -1015,7 +1023,7 @@ class DataProvider extends Component {
                 
                 const zfiIndex = this.state.zfData.findIndex(element => element.field === "compt4_nopax" );
                 let finalArray = [...this.state.zfData];
-                finalArray[zfiIndex] = {...finalArray[zfiIndex], index}
+                finalArray[zfiIndex] = {...finalArray[zfiIndex], index:rIndex}
                 this.setState({
                     zfData: finalArray,
                     });
@@ -1023,7 +1031,7 @@ class DataProvider extends Component {
 
                 const filledIndex = this.state.filledSheetData.findIndex(element => element.field === "compt4_nopax" );
                 let graphArray = [...this.state.filledSheetData];
-                graphArray[filledIndex] = {...graphArray[filledIndex], weight, index}
+                graphArray[filledIndex] = {...graphArray[filledIndex], weight:rWeight, index:rIndex}
                 this.setState({
                     filledSheetData: graphArray,
                     });
@@ -1058,7 +1066,9 @@ class DataProvider extends Component {
                     return { pax5Data : pax5 }
                 })
                 const { index, weight, message, pax } = pax5;
-                console.log(pax)
+                console.log(pax);
+                const rWeight = parseInt(weight);
+                const rIndex = parseFloat(index);
                 const paxIndex = this.state.totalPax.findIndex(element => element.field === "compt5_nopax" );
                 const freshArray = [...this.state.totalPax];
                 freshArray[paxIndex] = {...freshArray[paxIndex], numPax:pax}
@@ -1069,7 +1079,7 @@ class DataProvider extends Component {
 
                 const zfIndex = this.state.zfData.findIndex(element => element.field === "compt5_nopax" );
                 let newArray = [...this.state.zfData];
-                newArray[zfIndex] = {...newArray[zfIndex], weight, errMssge:message}
+                newArray[zfIndex] = {...newArray[zfIndex], weight:rWeight, errMssge:message}
                 this.setState({
                     zfData: newArray,
                     });
@@ -1077,7 +1087,7 @@ class DataProvider extends Component {
 
                 const zfiIndex = this.state.zfData.findIndex(element => element.field === "compt5_nopax" );
                 let finalArray = [...this.state.zfData];
-                finalArray[zfiIndex] = {...finalArray[zfiIndex], index}
+                finalArray[zfiIndex] = {...finalArray[zfiIndex], index:rIndex}
                 this.setState({
                     zfData: finalArray,
                     });
@@ -1085,7 +1095,7 @@ class DataProvider extends Component {
 
                 const filledIndex = this.state.filledSheetData.findIndex(element => element.field === "compt5_nopax" );
                 let graphArray = [...this.state.filledSheetData];
-                graphArray[filledIndex] = {...graphArray[filledIndex], weight, index}
+                graphArray[filledIndex] = {...graphArray[filledIndex], weight:rWeight, index:rIndex}
                 this.setState({
                     filledSheetData: graphArray,
                     });
@@ -1120,7 +1130,9 @@ class DataProvider extends Component {
                     return { pax6Data : pax6 }
                 })
                 const { index, weight, message, pax } = pax6;
-                console.log(pax)
+                console.log(pax);
+                const rWeight = parseInt(weight);
+                const rIndex = parseFloat(index);
                 const paxIndex = this.state.totalPax.findIndex(element => element.field === "compt6_nopax" );
                 const freshArray = [...this.state.totalPax];
                 freshArray[paxIndex] = {...freshArray[paxIndex], numPax:pax}
@@ -1131,7 +1143,7 @@ class DataProvider extends Component {
 
                 const zfIndex = this.state.zfData.findIndex(element => element.field === "compt6_nopax" );
                 let newArray = [...this.state.zfData];
-                newArray[zfIndex] = {...newArray[zfIndex], weight, errMssge:message}
+                newArray[zfIndex] = {...newArray[zfIndex], weight:rWeight, errMssge:message}
                 this.setState({
                     zfData: newArray,
                     });
@@ -1139,7 +1151,7 @@ class DataProvider extends Component {
 
                 const zfiIndex = this.state.zfData.findIndex(element => element.field === "compt6_nopax" );
                 let finalArray = [...this.state.zfData];
-                finalArray[zfiIndex] = {...finalArray[zfiIndex], index}
+                finalArray[zfiIndex] = {...finalArray[zfiIndex], index:rIndex}
                 this.setState({
                     zfData: finalArray,
                     });
@@ -1147,7 +1159,7 @@ class DataProvider extends Component {
 
                 const filledIndex = this.state.filledSheetData.findIndex(element => element.field === "compt6_nopax" );
                 let graphArray = [...this.state.filledSheetData];
-                graphArray[filledIndex] = {...graphArray[filledIndex], weight, index}
+                graphArray[filledIndex] = {...graphArray[filledIndex], weight:rWeight, index:rIndex}
                 this.setState({
                     filledSheetData: graphArray,
                     });
@@ -1184,7 +1196,9 @@ class DataProvider extends Component {
                     return { pax7Data : pax7 }
                 })
                 const { index, weight, message, pax } = pax7;
-                console.log(pax)
+                console.log(pax);
+                const rWeight = parseInt(weight);
+                const rIndex = parseFloat(index);
                 const paxIndex = this.state.totalPax.findIndex(element => element.field === "compt7_nopax" );
                 const freshArray = [...this.state.totalPax];
                 freshArray[paxIndex] = {...freshArray[paxIndex], numPax:pax}
@@ -1195,7 +1209,7 @@ class DataProvider extends Component {
 
                 const zfIndex = this.state.zfData.findIndex(element => element.field === "compt7_nopax" );
                 let newArray = [...this.state.zfData];
-                newArray[zfIndex] = {...newArray[zfIndex], weight, errMssge:message}
+                newArray[zfIndex] = {...newArray[zfIndex], weight:rWeight, errMssge:message}
                 this.setState({
                     zfData: newArray,
                     });
@@ -1203,7 +1217,7 @@ class DataProvider extends Component {
                 
                 const zfiIndex = this.state.zfData.findIndex(element => element.field === "compt7_nopax" );
                 let finalArray = [...this.state.zfData];
-                finalArray[zfiIndex] = {...finalArray[zfiIndex], index}
+                finalArray[zfiIndex] = {...finalArray[zfiIndex], index:rIndex}
                 this.setState({
                     zfData: finalArray,
                     });
@@ -1211,7 +1225,7 @@ class DataProvider extends Component {
 
                 const filledIndex = this.state.filledSheetData.findIndex(element => element.field === "compt7_nopax" );
                 let graphArray = [...this.state.filledSheetData];
-                graphArray[filledIndex] = {...graphArray[filledIndex], weight, index}
+                graphArray[filledIndex] = {...graphArray[filledIndex], weight:rWeight, index:rIndex}
                 this.setState({
                     filledSheetData: graphArray,
                     });
