@@ -387,6 +387,8 @@ class DataProvider extends Component {
                         fontSize: 27
                     },
 
+                    maintainAspectRatio: true,
+
                     scales: {
                         yAxes: [{
                             stacked: true,
@@ -1449,7 +1451,7 @@ class DataProvider extends Component {
             const findex = parseFloat(fuelIndex);
             const rampWeight = fweight + initWeight;
             const rampIndex = parseFloat(findex.toFixed(2)) + parseFloat(initIndex.toFixed(2));
-            const rIndex = parseInt(rampIndex)
+            const rIndex = rampIndex.toFixed(3);
             console.log(`this is the ramp weight ${rampWeight}`);
             console.log(`this is the ramp index ${rIndex}`);
             if( rampWeight > 29347 ){

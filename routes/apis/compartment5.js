@@ -18,7 +18,7 @@ router.post('/', (req, res) => {
             console.log(pax5Data);
             const cargoWeight = parseInt(pax5Data.weight);
             const cargoId = cargoWeight * 0.006;
-            const cargoIndex = cargoId.toFixed(3);
+            const cargoIndex = cargoId.toFixed(5);
             res.status(200).json({
                     pax : pax5Data.numberofpax,
                     weight : cargoWeight,
@@ -27,7 +27,7 @@ router.post('/', (req, res) => {
         }) 
     }else if( weight !== '' && weight <= 1008 && weight !== 0 && weight !== 84 && weight !== 168 && weight !== 252 && weight !== 336 && weight !== 420 && weight !== 504 && weight !== 588 && weight !== 672 && weight !== 756 && weight !== 840 && weight !== 924 && weight !== 1008 ){
         const cargoId = weight * 0.006;
-        const cargoIndex = cargoId.toFixed(3); 
+        const cargoIndex = cargoId.toFixed(5); 
         res.status(200).json({
             weight,
             index : cargoIndex,
